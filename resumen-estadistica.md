@@ -54,13 +54,63 @@ De la defincion de estos podemos genera distintis propiedades de las funciones d
 ## CONTEO
 Se utilizan distintos metodos de conteno para construir asignacion de probabilidades en espacio de muestreo finitos. Para resolver esto suele ser utili dividirlos en tareas mas pequeñas y aplicar reglas conocidas para combinarlos. 
 
-**TEOREMA FUNDAMENTAL DE CONTEO:**  Si un trabjo de **K** tareas, donde cada tarea$ $T_i$ puede hacerce en $N_i$ maneras, entonces el trabajo entero puede hacerce en 
+**TEOREMA FUNDAMENTAL DE CONTEO:**  Si un trabajo de **K** tareas, donde cada tarea$ $T_i$ puede hacerce en $N_i$ maneras, entonces el trabajo entero puede hacerce en 
 $N_1 X N_2 X...X N_K$ maneras.
 
-El porblema de conteo se puede dividir en:
+El problema de conteo se puede dividir en:
 - Conteo con reemplazo
 - Conteo sin reemplazo.
 A su vez tambien se debe tener en cuenta si el orden es o no importante.
 
+A la hora de elegir una formula debo hacerme dos preguntas:
+- Importa el orden?
+- Se pueden repetir elementos?
+
 ### DIFERENTES CASOS DE CONTEO
 ![Texto alternativo](Casos-Conteo.png)
+
+Operacion a tener en cuenta al leer la tabla:
+
+![Texto alternativo](Operacion-importante.png)
+
+
+Si dice **without replacement**, implica que se puede reeptir. En caso contrario indica que no se puede repetir el elemento.
+
+Estas tecnicas de conteo son utiles para espacio de muestro **S** que son finitos y todos sus resultados tienen la misma probabilidad de que ocurran.
+
+## PROBABILIDAD CONDICIONAL E INDEPENDENCIA
+Hasta ahora todos los casos que vimos son de **probabilidad incondicional**, todas las probabilidades fueron calculadas sobre el espacio de muestro definido. Si queremos que la misma cambie de acuerdo a nueva informacion, estamos hablando de **probabilidad condicional**.
+
+Si **A** y **B** son eventos de **S** y $P(B) > 0$, entonces la **probabilidad condicional** de **A** dado **B**, escrito como $P(A|B)$ sera:
+
+- $P(A|B) = \frac{P(A \cap B)}{P(B)} = \frac{P(B|A) P(A)}{P(B)}$
+
+$P(A)$ es nuestra creencia inicial, luego llega el evento $B$ y tenemos una nueva creencia representada por $P(A|B)$
+
+cada simbolo representa:
+- P(A|B): La probabilidad posterior. la probabilidad de que ocurrio A, dado el evento B.
+- P(B|A): La probabilidad previa, antes de la evidencia.
+- P(A): probabilidad de la evidencia, dado que la creencia es verdadera
+- P(B): probabilidad marginal, probabilidad de la evidencia bajo cualquier circunstancia. ver cual es la probabilidad de que ocurra mas alla de cualquier condicion.
+
+la idea es que nuestro espacio muestral es actualizaco a **B**, es decir estamos actualizando el espacio muestral usando lo que ocurrio en **B**. 
+La idea de condicionar es ver como cambia el espacio muestral luego de un evento sucedido.
+
+**TEOREMA DE BAYES:** sea $A_1,A_2...$ una particion del espacio de muestreo, y sea **B** cualquier conjunto. luego para cada $i = 1,2,...$ tengo que:
+
+- $P(A_i | B) = \frac{P(B|A_i)P(A_i)}{\sum_{j=1}^{\inf} P(B|A_j)P(A_j)}$
+
+Donde tengo que:
+- $P(A_i)$ representa la probabilidad de cada evento $A_i$
+- $P(A_i|b)$ representa la probabilidad de cada evento $A_i$ dado el evento **B**.
+- EL denominador representa la probabilidad de $B$.
+
+**INDEPENDENCIA DE EVENTOS:** dos eventos son independientes si $P(A \cap B) = P(A) P(B)$
+
+a partir de esto podemos decir que, si **A** y **B** son eventos independientes, entonces los siguientes pares tambien lo son:
+- $A$ y $B^c$
+- $A^c$ y $B$
+- $A^c$ y $B^c$
+
+- Una coleccion de eventos $A_1,A_2,..$ son independientes entre ellos si para toda subcoleccion $A_i_1,...,A_i_k$ tenemos que:
+
