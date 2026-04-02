@@ -89,9 +89,13 @@ $P(A)$ es nuestra creencia inicial, luego llega el evento $B$ y tenemos una nuev
 
 cada simbolo representa:
 - P(A|B): La probabilidad posterior. la probabilidad de que ocurrio A, dado el evento B.
-- P(B|A): La probabilidad previa, antes de la evidencia.
+- P(B|A): La probabilidad previa, antes de la evidencia. es la probabilidad de que ocurra B dada que la hipotesis A es verdadera. probabilidad de B dado A.
 - P(A): probabilidad de la evidencia, dado que la creencia es verdadera
 - P(B): probabilidad marginal, probabilidad de la evidencia bajo cualquier circunstancia. ver cual es la probabilidad de que ocurra mas alla de cualquier condicion.
+
+La probabilidad de **B** se puede pensar como, $P(B) = P(B|A)P(A) + P(B|A^c)P(A^c)$, donde:
+$P(B|A)P(A) = $ la probabilidad de ver B en el mundo donde ocurre A
+$P(B|A)P(A) = $ la probabilidad de ver B en el mundo donde no ocurre B.
 
 la idea es que nuestro espacio muestral es actualizaco a **B**, es decir estamos actualizando el espacio muestral usando lo que ocurrio en **B**. 
 La idea de condicionar es ver como cambia el espacio muestral luego de un evento sucedido.
@@ -112,5 +116,23 @@ a partir de esto podemos decir que, si **A** y **B** son eventos independientes,
 - $A^c$ y $B$
 - $A^c$ y $B^c$
 
-- Una coleccion de eventos $A_1,A_2,..$ son independientes entre ellos si para toda subcoleccion $A_i_1,...,A_i_k$ tenemos que:
+- Una coleccion de eventos $A_1,A_2,..$ son independientes entre ellos si para toda subcoleccion $A_{i}_{1},...,A_{i}_{k}$ tenemos que:
 
+# VARIABLES ALEATORIAS
+**VARIABLE ALEATORIA:** es una funcion de un espacio de sampleo a numeros reales. 
+
+Al definir esto estamos obteniendo un nuevo espacio de sampleo. Podemos chequear que nuestra funcion de probabilidad tambien funcione sobre este nuevo espacio.
+
+Ver ejemplos 1.4.4, 1.4.3.
+
+para cada valor aleatoria **X**, asociamos una funcion llamada la funcion de distribucion acumulativa:
+
+Para una variable independiente **X**, la funcion acumulativa (cdf), la cual se denota como $F_x(X)$, se define como:
+- $F_x(x) = P_x(X \leq x)$ para todo x.
+
+Se define en base a la funcion de probabilidad de X.
+ver definicion de 1.5.2
+
+Se puede pensar que $F_x$ puede ser discontinua. Pero de acuerdo a como fue definida, al producirse un salto, toma el valor del tope de ese salto. Esto se conoce como **Continuidad a derecha**, la funcion es continua cuando un punto se aproxima desde la derecha.
+
+![Texto alternativo](Funcion-Acumulativa-Propiedades.png)
