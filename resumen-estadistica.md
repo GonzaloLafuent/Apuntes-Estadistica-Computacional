@@ -135,6 +135,8 @@ Veamos el siguiente ejemplo de DM:
 
 La funcion de distribucion describe el comportamiento probabilistico de una variable aleatoria **X** asociada a un experimento aleatorio. Representa la probabilidad de que una variable aleatoria tome un valor menor o igual a un cierto valor definido.
 
+esto genera lo que se define como distribucion **DISTRIBUCION:** tabla o funcion que te dice que probabilidad tiene cada valor posible. 
+
 ![Texto alternativo](Ejemplo-Variable-Aleatoria-DM.png)
 
 Se define en base a la funcion de probabilidad de X.
@@ -189,6 +191,22 @@ A la hora de definir un fenomeno en terminos de una varibale alteatorias con uan
 
 **DISTRIBUCION DE FUNCION DE UNA VARIBALE ALEATORIA:** Si **X** es una variable aleatoria con una cdf $F_x(x)$, luego cualquier funcion **X**, por ejemplo $g(X)$ es tambien una variable aleatoria. Por lo general decimos que $Y = g(X)$ para denotar una nueva varibale aleatoria. 
 
+dado que **Y** es una funcion de **X**, podemos describir el comportamiento probabilistico de **Y** en terminos de X, esto implica que para cada set **A** tengo que:
+
+- $P(Y \in A) = P(g(X) \in A)$
+
+muestra que la distribucion **Y** depende de las funcion $F_x$ y **g**.
+
+ademas, si escribimos $y = g(x)$ , la funcion $g(x)$ define un nuevo espacio de mapeo del espacio muestral inicial **X**.
+
+Esto define la idea de **TRANSFORMACION**. Dado una varibale independiente **X**, yo le aplico una funcion, definiendo una nueva variable independiente **Y** tal que, $Y = g(X)$
+
+Ya sabemos como se distribuye **X**, luego **Y** sera una nueva variable a la cual queremos entender. Donde aplicaremos que:
+
+- $P(Y = y) = P(g(X) = y)$
+
+Una transformacion no cambia las porbabilidades, solo la forma en la que se observa. Reagrupa los valores de **X** en terminos de **Y**.
+
 **VALOR ESPERADO o ESPERANZA**: Dado una variable aleatoria, el valor esperado de la misma es casi el promedio de su valor, donde cuando decimos promedio nos referimos a un valor que es medido de acuerdo a la probabilidad de distribucion. 
 Por medio de pesar los valores de una variable aleatoria, de acuerdo a la dsitrbucion de probabilidad, esperamos obyener un numero que resuman un valor tipico y esperado de uan observacion sobre una varibale aleatoria.
 
@@ -201,3 +219,23 @@ $g(X)$ representa la posibilidad de utilizar alguna tranformacion de una varibal
 En resumen en la esperanza sera un valor que nos indica el valor promedio que se espera obtener de una variable aleatoria a largo plazo. Es decir, si repito el experimento muchas veces, la esperanza nos dice cual sera el resultado promedio. Nos da una idea de un comportamiento general a largo plazo.
 
 ![Texto alternativo](Propiedades-Esperanza.png)
+
+**VARIANZA:** es una medida de la deispersion de una distribucion. Sea **X** una variable aleatoria con $\mu$ igual a su media, es decir $\mu = E(X)$. luego la varianza de **X** se define como:
+
+- $ VAR(X) = \sigma = E(X- \mu)² = \int_{}{} (x-\mu)² \mathrm{d}F(X) $
+
+la desviacion estandar de **X** se define como $\sqrt {VAR(X)}$
+
+**FAMILIAS DE DISTRIBUCIONES COMUNES**
+Para poder modelar poblaciones, en general trabajamos con con familias de distribuciones. Las familias son idexadas por mas de un parametro. 
+Cada una por lo general tendra una esperanza y varianza definida, donde para cada una habra aplicaciones basicas definidas. 
+
+**DISTRIBUCIONES DISCRETAS:** 
+una variable independeinte **X** tiene una distribucion uniforme si, la distribucion es:
+
+- $P(X = x|N) = \frac{1}{N}$ con $x = 1,2,3....N$.
+
+la distribucion da la misma masa para cada posible resultado 1,2..N. a su vez tenemos que:
+
+- $EX = \frac{N+1}{2}$
+- $VAR X = \frac{(N+1)(N-1)}{12}$
