@@ -119,16 +119,23 @@ a partir de esto podemos decir que, si **A** y **B** son eventos independientes,
 - Una coleccion de eventos $A_1,A_2,..$ son independientes entre ellos si para toda subcoleccion $A_{i}_{1},...,A_{i}_{k}$ tenemos que:
 
 # VARIABLES ALEATORIAS
-**VARIABLE ALEATORIA:** es una funcion de un espacio de sampleo a numeros reales. 
+**VARIABLE ALEATORIA:** es una funcion de un espacio de sampleo a numeros reales. Es decir sera una funcion que le asigna un valor numerico a cada resultado posible de un experimento aleatorio. Nos permite cuantificar los resultados de un evento o suceso aletario.
 
 Al definir esto estamos obteniendo un nuevo espacio de sampleo. Podemos chequear que nuestra funcion de probabilidad tambien funcione sobre este nuevo espacio.
+En algunos casos, cuando los eventos ocurridos son numeros, los valores coinciden con los de la variable aletoria.
 
 Ver ejemplos 1.4.4, 1.4.3.
 
 para cada valor aleatoria **X**, asociamos una funcion llamada la funcion de distribucion acumulativa:
 
-Para una variable independiente **X**, la funcion acumulativa (cdf), la cual se denota como $F_x(X)$, se define como:
+**FUNCION ACUMULATIVA O FUNCION DE DISTRIBUCION**: Para una variable independiente **X**, la funcion acumulativa (cdf), la cual se denota como $F_x(X)$, se define como:
 - $F_x(x) = P_x(X \leq x)$ para todo x.
+
+Veamos el siguiente ejemplo de DM:
+
+La funcion de distribucion describe el comportamiento probabilistico de una variable aleatoria **X** asociada a un experimento aleatorio. Representa la probabilidad de que una variable aleatoria tome un valor menor o igual a un cierto valor definido.
+
+![Texto alternativo](Ejemplo-Variable-Aleatoria-DM.png)
 
 Se define en base a la funcion de probabilidad de X.
 ver definicion de 1.5.2
@@ -136,3 +143,61 @@ ver definicion de 1.5.2
 Se puede pensar que $F_x$ puede ser discontinua. Pero de acuerdo a como fue definida, al producirse un salto, toma el valor del tope de ese salto. Esto se conoce como **Continuidad a derecha**, la funcion es continua cuando un punto se aproxima desde la derecha.
 
 ![Texto alternativo](Funcion-Acumulativa-Propiedades.png)
+
+**CONTINUIDAD:** Una variable aleatoria **X** es continua si $F_x(x)$ es una funcion continua de x. En este caso, decimos que sera continua cuando el conjunto de valores posibles son todos los valores de un intervalo o de una union de intervalos de numeros reales.
+Por ejemplo, si consideramos el experimento aleatoria
+consistente en medir el nivel de agua en un embalse y tomamos la variable aleatoria X=”nivel de agua”, esta puede tomar valores entre 0 y más infinito
+
+**DISCRETA:** Una variable aleatoria **X** es discreta si $F_x(x)$ es una funcion a pasos de x. Por lo general lo que nos quiere decir es que una variable aleatoria sera discreta si su resultado es finiro o infinito numerable.
+Por ejemplo, supongamos el experimento consistente en lanzar tres veces una moneda no trucada; si consideramos la variable aleatoria X=”número de caras obtenidas en los tres lanzamientos”, los valores que puede tomar esta variable aleatoria son finitos (0,1,2,3).
+
+**DISTRIBUCION IDENTICA:** Decimos que dos varibale aleatorias **X** e **Y** son distribuidas identicamente su, para cada cojunto A perteneciente al sigma algebra, entonces $P(X \in A) = P(Y \in A)$. Esto no implica que sean iguales. 
+
+**TEOREMA:** los siguiente oraciones son equivalentes:
+- Las variables aleatorias **X** e **Y** son distribuidas identicamente.
+- $F_x(x) = F_y(x)$ para todo x.
+
+**FUNCION DE MASA DE PROBABILIDAD:** la funcion de masa de probabilidad se define sobre una variable aleatoria **X** como:
+- $f_x(x) = P(X = x)$ para todo x.
+
+Notar que para hablar de estad funciones le ponemos una letra f en minuscula.
+En este caso define la probabilidad de que una variable aleatoria **X** tome un valor exacto x. Solo aplica a variables aleatorias discretas. 
+Para la defincion de esta funcion en el caso de las varibales independientes discretas, podemos sumar los valores de la pmf para obtener la cdf.
+
+para el caso de las variables aletorias continuas usamos otro nombre.
+
+**FUNCION DE DENSIDAD DE PROBABILIDAD:** la funcion de densidad de la probabilidad $f_x(x)$, sera aquella que satisface que:
+- $F_x(x) = \int_{-\infty}^{x} f_x(t) \mathrm{d}x $
+
+Esto a su vez quiere decir que:
+
+- $\frac{\partial }{\partial x} F_x(x)= f_x(x)$ 
+
+La función de densidad de probabilidad (PDF) es la probabilidad que toma una variable aleatoria continua en un intervalo específico. Se evalua en intervaloes especificos.
+
+En parte esto nos define que tanto la pdf como al pmf contienen la misma informacion que la cdf, por lo tanto debemos elegir la mas sencilla para resolver el problema.
+
+![Texto alternativo](Propiedades-pdf-pmf.png)
+
+Por le genearl la funcion de acumulativa de porbabilidad se usa cuando necesitamos hallar la probabilidad de que una variable aleatoria sea menor o igual a un valor especifico.
+Por el otro lado, la pdf o pmf, se usa cuando necesitamos obtener la probabilidad sobre un valor especifico.
+
+A la hora de definir un fenomeno en terminos de una varibale alteatorias con uan cdf $F_x(x)$, preocupara el comportamiento de la misma. 
+
+# VAlORES ESPERADOS
+A la hora de definir un fenomeno en terminos de una varibale alteatorias con uan cdf $F_x(x)$, preocupara el comportamiento de la misma.
+
+**DISTRIBUCION DE FUNCION DE UNA VARIBALE ALEATORIA:** Si **X** es una variable aleatoria con una cdf $F_x(x)$, luego cualquier funcion **X**, por ejemplo $g(X)$ es tambien una variable aleatoria. Por lo general decimos que $Y = g(X)$ para denotar una nueva varibale aleatoria. 
+
+**VALOR ESPERADO o ESPERANZA**: Dado una variable aleatoria, el valor esperado de la misma es casi el promedio de su valor, donde cuando decimos promedio nos referimos a un valor que es medido de acuerdo a la probabilidad de distribucion. 
+Por medio de pesar los valores de una variable aleatoria, de acuerdo a la dsitrbucion de probabilidad, esperamos obyener un numero que resuman un valor tipico y esperado de uan observacion sobre una varibale aleatoria.
+
+Dado una variable aleatoria $g(X)$, denotada como $Eg(x)$, la esperanza sera:
+
+![Texto alternativo](Esperanza-Ecuacion.png)
+
+$g(X)$ representa la posibilidad de utilizar alguna tranformacion de una varibale independiente $X$, pero se puede tomar tambien a $g(X) = X$.
+
+En resumen en la esperanza sera un valor que nos indica el valor promedio que se espera obtener de una variable aleatoria a largo plazo. Es decir, si repito el experimento muchas veces, la esperanza nos dice cual sera el resultado promedio. Nos da una idea de un comportamiento general a largo plazo.
+
+![Texto alternativo](Propiedades-Esperanza.png)
