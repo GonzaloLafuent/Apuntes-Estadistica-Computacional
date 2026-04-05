@@ -414,3 +414,28 @@ Es un caso especial de la distribucion gamma. la pdf tendra la siguiente forma:
 La distrbucion exponencial puede ser utilizada para modelar fenomenos de vida. Es analoga al caso de la distrbucion geometrica en el caso de las discretas.
 
 tiene la falta de memoria, por que sirve para modelar procesos de vida???
+
+## INECUACIONES E IDENTIDADES
+**DESIGUALDAD DE CHERYSHEV:** dada una variable independiente **X** y una funcion$ g(x)$ no negativa. luego para todo $r >0$ tengo que:
+
+- $P(g(X) \geq r) \leq \frac{Eg(x)}{r}$
+
+## DISTRIBUCIONES CONJUNTAS
+En esta caso vamos a empezar a hablar de modelo que incluyen mas de una variable independiente, estos seran modelos mutivariable.
+
+veamos algunas definciones que seran de ayuda:
+**VECTOR ALEATORIO DE DIMENSION N:** es una funcion de un espacio de muestro **S** a $R^{n}$, un espacio euclidio de dimension $n$.
+
+Un ejemplo puede ser un problema donde tiramos dos dados. El epsacio muestral va esta formado por tupla donde tengo: (el valor del primer dado, el valor del segundo dado).
+Luego puedo definir dos variables aleatorias, X e Y tal que:
+- $X = \text{la suma de ambos dados}$
+- $Y = |\text{la diferencia de ambos dados}|$
+
+De esta forma tenes un vector aleatoria de dimension dos de la forma $(X,Y)$. Ahora debemos definir las probabilidad des los eventos en terminos de $(X,Y)$, por ejemplo, que representa $P(X = 5 & Y = 3)$. En este casos solo tenemos dos evento que cumple esto, {(4,1),(1,4)}, luego la probabilidad sera de $\frac{2}{36}$.
+
+El vector definido arriba sera cocebido como discreto, dada que solo posee un numero contable de posibles valores. 
+
+**FUNCION DE MASA DE PORBABILIDAD CONJUNTA:** sea $(X,Y)$ un vector aleatorio de dimension 2 discreto. la funcion $f(x,y)$ de $R^{2}$ a $R$ se define como $f(x,y) = P(X = x, Y = y)$.
+Se suele notar como $f_{X \ Y}(x,y)$.
+
+esta pmf define la probabilidad de distribucion 
