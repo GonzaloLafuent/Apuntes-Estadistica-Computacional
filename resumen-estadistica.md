@@ -237,7 +237,7 @@ Cuando hablamos de familias de distribuciones nos referimos a un conjunto de dis
 - Dependen de ciertos parametros.
 Es decir uan familia de distribuciones tiene una misma funcion general parametrizada.
 
-**DISTRIBUCIONES DISCRETAS:** 
+### DISTRIBUCIONES DISCRETAS: 
 una variable independeinte **X** tiene una distribucion uniforme si, la distribucion es:
 
 - $P(X = x|N) = \frac{1}{N}$ con $x = 1,2,3....N$.
@@ -328,4 +328,89 @@ En este caso nos permite contar el numero de de juicios de bernoulli necesarios 
 
 - $P(X = x|r,p) = \binom{x-1}{r-1}p^r(1-p)^{x-r}$
 
-el evento {X = x} puede ocurrir solo si hay exactamente **r-1** exitos en **x-1** juicios, y un sueceso en el jucio **x**
+el evento {X = x} puede ocurrir solo si hay exactamente **r-1** exitos en **x-1** juicios, y un sueceso en el jucio **x**. la probilidad de **r-1** exitos en **x-1** juciios es la probabilidad binomila dada por $\binom{x-1}{r-1}p^{r-1}(1-p)^{x-r}$
+
+A veces la distribucion negativa puede definirse en terminos de la variables independiente $Y= \text{numero de fracasos en antes de r sucesos}$. Es lo mismo a la dada en terminos de **X**. De esta forma, podemos dar una formula alternativa:
+
+- $P(Y = y) = \binom{r+y-1}{y}p^r(1-p)^{y}$
+
+Luego podemos definir que:
+
+- $EY = r\frac{1-p}{p}$ 
+- $AVRY = \frac{r(1-p)}{p^2}$
+
+Tanto la disttribucion de poisson como la distribucion binomial puede ser utilizados para modelar fenomenos en los cuales estamos esperando que ocurra algo.
+
+**DISTRIBUCION GEOMETRICA**
+Es un caso especial de la distribucion binomial negativa. Si establecemos que $r = 1$, entonces tenemos que:
+
+- $P(X = x|p) = p(1-p)^{x-1} $
+
+Que define la pmf de una variable aleatoria geoemtrica con probabilidad p. En este caso **X** puede ser interpretada como el juicio en el cual el primer exito ocurre, estamos esperando por el exito.
+
+- $EX = \frac{1}{p}$
+- $VARX = \frac{1-p}{p^2}$
+
+una propiedad importante de la distribucion geometrica es que:
+
+- $P(X > s|X> t) = P(X > s-t)$
+
+La idea es que esta distribucion olivida lo que paso, la probabilidad de obtener $s-t$ fracasos adicionales, habiendo observado ya $t$, es lo que mismo que la probabilidad de observar $s-t$ fracasos al principio de la secuencia. 
+
+Esta propiedad nos indica que esta distribucion no es buena para modelar procesos con cierta vida, donde se espera que el fracaso crezca con el tiempo.
+
+### DISTRIBUCIONES CONTINUAS
+**DISTRIBUCION UNIFORME:***
+Se define por medio de repatir la masa de forma uniforme sobre el intervalo $[a,b]$. la pdf tendra ls siguiente forma:
+
+- $f(x|a,b) = \begin{cases}
+                \frac{1}{b-a} & \text{si x pertenece a [a,b]}\\
+                0 & \text{en lo contrario}
+                \end{cases}$
+
+luego:
+
+$EX = \frac{b+a}{2}$
+$VAR X = \frac{(b-a)^2}{12}$
+
+**DISTRIBUCION GAMMA**
+es una familia de distribucion sobre $[0,\infty)$. Tenemos que la pdf sera:
+
+- $f(t) = \frac{t^{\alpha -1}e^{-t}}{\Gamma(\alpha)}$
+
+para $0 < t < \infty$. donde tenemos que:
+
+- $\Gamma(\alpha) = \int_0^{\infty} t^{\alpha-1}e^{-t} \mathrm{d}t $
+
+el parametro $\alpha$ se suele conocer como el parametro de forma, siendo el que mas influye en la distribucion.
+
+- $EX = ?$
+- $VAR x = ?$
+
+**DISTRIBUSION NORMAL O DISTRIBUCION GAUSSIANA**
+caracteristicas de esta distribucion:
+- Esta tipo de distribucion y las asociadas a la misma son faciles de seguir desde el punto de vista analitico
+- tiene una forma de campana por lo que son simetricas, algo que es muy buscado en muchos modelos de poblaciones.
+- se cumple el **teorema de limite central**, bajo condiciones leves, la distribucion normal puede ser uasada para aproximar una gran variedad de distribuciones en grandes muestreos. la formula de la pdf sera:
+
+- $f(x|\mu \ \sigma^2) = \frac{1}{\sqrt{2 \pi \sigma }} \ e^{-(x-\mu)^{2}/(2\sigma^{2})}$
+
+los parametros seran $\mu$ y $\sigma^{2}$ que representar la esperanza y la varianza.
+
+Esta distribucion es especial debido a que sos parametros nos proveen informacion completa sobre la forma y ubicacion exacta de la distribucion.
+
+**CAUCHY DISTRIBUTION**
+Posee una forma de campana, definda sobre $(-\infty,\infty)$ con una pdf de la forma:
+
+- $f(x|\theta) = \frac{1}{\pi} \ \frac{1}{1+(x-\theta)^{2}}$
+
+En este caso no existe la media en esta distribucion. Este tipo de distribucion representa un caso extremo contra el cual pueden ser puesta a prueba ciertas conjeturas. 
+
+**DISTRIBUCION EXPONENCIAL**
+Es un caso especial de la distribucion gamma. la pdf tendra la siguiente forma:
+
+- $f(x|p) = \frac{1}{\Gamma(p/2)2^{p/2}}x^{(p/2)-1}e^{-x/2}$
+
+La distrbucion exponencial puede ser utilizada para modelar fenomenos de vida. Es analoga al caso de la distrbucion geometrica en el caso de las discretas.
+
+tiene la falta de memoria, por que sirve para modelar procesos de vida???
