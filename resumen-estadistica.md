@@ -137,6 +137,8 @@ La funcion de distribucion describe el comportamiento probabilistico de una vari
 
 esto genera lo que se define como distribucion **DISTRIBUCION:** tabla o funcion que te dice que probabilidad tiene cada valor posible. 
 
+En conclusiones la **Distribucion** describe como se reparte la probabilidad sobre los posibles valores de una variable aleatoria. La nocion de distrinbucion va mas alla de la fruncion que usamos, las funciones (cdf, pmf, pdf) son formas concretas de describirla.
+
 ![Texto alternativo](Ejemplo-Variable-Aleatoria-DM.png)
 
 Se define en base a la funcion de probabilidad de X.
@@ -230,6 +232,11 @@ la desviacion estandar de **X** se define como $\sqrt {VAR(X)}$
 Para poder modelar poblaciones, en general trabajamos con con familias de distribuciones. Las familias son idexadas por mas de un parametro. 
 Cada una por lo general tendra una esperanza y varianza definida, donde para cada una habra aplicaciones basicas definidas. 
 
+Cuando hablamos de familias de distribuciones nos referimos a un conjunto de distribuciones que:
+- Comparten forma general.
+- Dependen de ciertos parametros.
+Es decir uan familia de distribuciones tiene una misma funcion general parametrizada.
+
 **DISTRIBUCIONES DISCRETAS:** 
 una variable independeinte **X** tiene una distribucion uniforme si, la distribucion es:
 
@@ -239,3 +246,86 @@ la distribucion da la misma masa para cada posible resultado 1,2..N. a su vez te
 
 - $EX = \frac{N+1}{2}$
 - $VAR X = \frac{(N+1)(N-1)}{12}$
+
+Sera una distribucion para variables aleatorias **DISCRETAS**
+Notar que usamos |N para referirinos a que la distribucion depende de ciertos parametros. 
+
+**DISTRIBUCIONES HYPERGEOMETRICA:**
+Supongamos que tenemos una urna llena de **N** pelotas que son identicas en todos sus aspecto menos en que tengo **M** pelotas rojas y **N-M** pelotas verdes. Con los ojos cerrados intentamos elegir **K** pelotas. cual es la probailidad de **k** sean rojas?
+para lograr esto debo elegir **x** pelotas de las **M** rojas.  A su vez debo elegir **(K-x)** pelotas verdes de las **(N-M)** pelotas verdes totales. todo esto divido por las **K**  pelotas elegidas sobre las **N** totales.
+Formula general:
+
+![Texto alternativo](Formula-Distribucion-Hipergeometrica.png.png)
+
+El rango de **X** a su vez tiene restricciones adicionales, donde:
+- $M \geq x$
+- $N- M \geq K-x$
+
+lo que da que:
+
+- $M-(N-K) \leq x \leq M$
+
+Esta ditribucion muestra lo dificil de trabajar con poblaciones finitas.
+
+**FALTA LA DEFINCION DE ESPERANZA Y VARIANZA**
+
+**DISTRIBUCION DE BERNOULLI:**
+Una variable independiente **X** posee una distribucion de bernoulli si: 
+
+- $X = \begin{cases}
+        1  & \text{con probilidad p}\\
+        0  & \text{con probilidad 1-p}
+       \end{cases}$
+
+Donde $0 \leq p \leq 1$. Luego tengo que
+- $EX = p$
+- $VAR X = p(1-p)$
+
+Muchos esperimentos pueden ser modelas como una secuencia de ensayos de bernoulli. El mas sencillo es repetir el lanzamiento de una moneda donde $ P = \text{probilidad de conseguir cara}$, luego $X = 1$ es si la moneda mostro cara. 
+
+**DISTRIBUCION BINOMIAL:**
+A partir de bernoulli podemos definri esta distribucion. Si b juicion de bernoulli son realizados, donde cada evento esta definido de la form:
+
+- $A_i $ = {X = 1 \text{en el jucicio i}}$
+
+tomando que todos los eventos son independientes. Es facil determinar la distribucion de numeros totales de exito en **n** juicios. Si definimos una variables aleatoria **Y** donde:
+
+- $ Y = numero total de exitos en n juicios$
+ 
+El evento ${Y = y}$ ocurre solo si de $A_i$ eventos, solo **y** tienen exito. Luego una posible resutlado de esto sera $A_1 \cap A_2 \cap A^c_3 \cap ... \cap A_{n-1} \cap A^c_n$ donde la probilidad de esto sera:
+
+- $P(A_1 \cap A_2 \cap A^c_3 \cap ... \cap A_{n-1} \cap A^c_n) = pp(1-p)...p(1-p) = p^y(1-p)^{n-y}$
+
+Luego puedo elegir y distintas secuencias de n. por lo teanto la forma ds distribuccion binomial sera:
+
+$P(Y = y |n,p) = \binom{n}{y}p^y(1-p)^{n-y}$ 
+
+La variable **Y** puede tomar distintas formas, donde dado una serie de **n** jucios de bernoulli, donde cada uno tiene probilidad p, definidas la variables aleatorias $X_1, .., X_n$
+luego:
+
+- $X_i = \begin{cases}
+        1  & \text{con probilidad p}\\
+        0  & \text{con probilidad 1-p}
+       \end{cases}$
+
+luego tenemos que:
+- $Y = \sum_{i=1}^{n} X_i$
+
+**DISTRIBUCION DE POISSON:**
+Se suele usar para modelar fenomenos donde estamos esperando que algo ocurrar, como por ejemplo esperando un colectivo, esperando que un consumidor aparezca en un banoc, etc. 
+El numero de ocurrencias dentro de un intervalo de tiempo pueden ser modelados con esta distribucion.
+Tambien puede ser usada para distribucion espacial, como por ejemplo la distribucion de impactos de bomba en un area o la distrbucion de peces en un lago. La formula sera:
+
+- $P(X = x|\lambda) = \frac{e^{-\lambda} \lambda^x}{x!}$
+
+El parametro $\lambda$ se lo suele llamar parametro de intensidad. A su vez tenemos que:
+
+- $EX = \lambda$
+- $VARX = \lambda $
+
+**DISTRIBUCION BINOMIAL NEGATIVA:**
+En este caso nos permite contar el numero de de juicios de bernoulli necesarios para obtener un numeros de exitos. En una secuencia de juicios de bernoulli, definamos a **X** como el juicio donde el suceso numero **r** ocurre, donde **r** es un entero fijo.luego:
+
+- $P(X = x|r,p) = \binom{x-1}{r-1}p^r(1-p)^{x-r}$
+
+el evento {X = x} puede ocurrir solo si hay exactamente **r-1** exitos en **x-1** juicios, y un sueceso en el jucio **x**
