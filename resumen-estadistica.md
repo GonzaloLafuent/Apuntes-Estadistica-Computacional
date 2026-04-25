@@ -126,9 +126,13 @@ En algunos casos, cuando los eventos ocurridos son numeros, los valores coincide
 
 Ver ejemplos 1.4.4, 1.4.3.
 
+Diremos que $X = x_i$ si y solo si el resultado de un experimento aleatoria es un $s_i \in S$ tal que $X(s_j) = x_i$. luego:
+
+- $P(X = x_i) = P({s_j \in S : X(s_j) = x_i})$
+
 para cada valor aleatoria **X**, asociamos una funcion llamada la funcion de distribucion acumulativa:
 
-**FUNCION ACUMULATIVA O FUNCION DE DISTRIBUCION**: Para una variable independiente **X**, la funcion acumulativa (cdf), la cual se denota como $F_x(X)$, se define como:
+**FUNCION ACUMULATIVA O FUNCION DE DISTRIBUCION**: Para una variable independiente **X**, la **funcion acumulativa de distrbucion** (cdf), la cual se denota como $F_x(X)$, se define como:
 - $F_x(x) = P_x(X \leq x)$ para todo x.
 
 Veamos el siguiente ejemplo de DM:
@@ -187,6 +191,19 @@ Por le genearl la funcion de acumulativa de porbabilidad se usa cuando necesitam
 Por el otro lado, la pdf o pmf, se usa cuando necesitamos obtener la probabilidad sobre un valor especifico.
 
 A la hora de definir un fenomeno en terminos de una varibale alteatorias con uan cdf $F_x(x)$, preocupara el comportamiento de la misma. 
+
+Para una variable continua **X** tendremos que:
+
+- $P(a < X < b) = P(a < X \leq b) = P(a \leq X < b) = P(a \leq X \leq b)$
+
+Otra relacion importante con respecto a la integracion para ambas funciones sera que:
+
+- $ P(a \leq X \leq b) =  \int_{a}^{b} f_x(x)dx = F_x(b) - F_x(a)$
+
+![Texto alternativo](Area-curva.png)
+
+Esto nos dice que la informacion que nos da tanto la funcion de densidad comod emasa, sera equivalente a la informacion que nos da la funcion de ditribucion acumulativa. 
+
 
 # VAlORES ESPERADOS
 A la hora de definir un fenomeno en terminos de una varibale alteatorias con uan cdf $F_x(x)$, preocupara el comportamiento de la misma.
@@ -311,6 +328,11 @@ luego:
 luego tenemos que:
 - $Y = \sum_{i=1}^{n} X_i$
 
+Para esta distribucion tenemos que, si **X** posee una distrbibucion **binomial(n,p)**, luego:
+
+- $EX = n.p$
+- $VAR X = n.p(1-p)$
+
 **DISTRIBUCION DE POISSON:**
 Se suele usar para modelar fenomenos donde estamos esperando que algo ocurrar, como por ejemplo esperando un colectivo, esperando que un consumidor aparezca en un banoc, etc. 
 El numero de ocurrencias dentro de un intervalo de tiempo pueden ser modelados con esta distribucion.
@@ -334,10 +356,12 @@ A veces la distribucion negativa puede definirse en terminos de la variables ind
 
 - $P(Y = y) = \binom{r+y-1}{y}p^r(1-p)^{y}$
 
+En este caso tenemos que $Y = X-r$
+
 Luego podemos definir que:
 
 - $EY = r\frac{1-p}{p}$ 
-- $AVRY = \frac{r(1-p)}{p^2}$
+- $VARY = \frac{r(1-p)}{p^2}$
 
 Tanto la disttribucion de poisson como la distribucion binomial puede ser utilizados para modelar fenomenos en los cuales estamos esperando que ocurra algo.
 
@@ -357,7 +381,10 @@ una propiedad importante de la distribucion geometrica es que:
 
 La idea es que esta distribucion olivida lo que paso, la probabilidad de obtener $s-t$ fracasos adicionales, habiendo observado ya $t$, es lo que mismo que la probabilidad de observar $s-t$ fracasos al principio de la secuencia. 
 
-Esta propiedad nos indica que esta distribucion no es buena para modelar procesos con cierta vida, donde se espera que el fracaso crezca con el tiempo.
+Esta propiedad nos indica que esta distribucion no es buena para modelar procesos con cierta vida, donde se espera que el fracaso crezca con el tiempo. Otra forma de pensarlo es como:
+
+- $P(X > s + t|X > s) = P(X > t)$
+
 
 ### DISTRIBUCIONES CONTINUAS
 **DISTRIBUCION UNIFORME:***
@@ -398,6 +425,10 @@ caracteristicas de esta distribucion:
 los parametros seran $\mu$ y $\sigma^{2}$ que representar la esperanza y la varianza.
 
 Esta distribucion es especial debido a que sos parametros nos proveen informacion completa sobre la forma y ubicacion exacta de la distribucion.
+
+Si una variable a aletoria posee una distribucion norma tal que $normal(\mu,\sigma^2)$, luego puedo transforma a la variable aleatoria $Z = (X-\mu)/ \sigma$ que posee una dsitribucion $normal(0,1)$, conodifo como la **normal estandar**.
+
+Esto nos dice que toda distribucio normla puede ser calculada en terminso de la distrbucion normal estandar, dandonos una forma mas sencilla de obtener la probailidad con algo conocido. 
 
 **CAUCHY DISTRIBUTION**
 Posee una forma de campana, definda sobre $(-\infty,\infty)$ con una pdf de la forma:
