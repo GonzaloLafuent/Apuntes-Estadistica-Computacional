@@ -272,7 +272,7 @@ Supongamos que tenemos una urna llena de **N** pelotas que son identicas en todo
 para lograr esto debo elegir **x** pelotas de las **M** rojas.  A su vez debo elegir **(K-x)** pelotas verdes de las **(N-M)** pelotas verdes totales. todo esto divido por las **K**  pelotas elegidas sobre las **N** totales.
 Formula general:
 
-![Texto alternativo](Formula-Distribucion-Hipergeometrica.png.png)
+![Texto alternativo](Formula-Distribucion-Hipergeometrica.png)
 
 El rango de **X** a su vez tiene restricciones adicionales, donde:
 - $M \geq x$
@@ -464,9 +464,92 @@ Luego puedo definir dos variables aleatorias, X e Y tal que:
 
 De esta forma tenes un vector aleatoria de dimension dos de la forma $(X,Y)$. Ahora debemos definir las probabilidad des los eventos en terminos de $(X,Y)$, por ejemplo, que representa $P(X = 5 & Y = 3)$. En este casos solo tenemos dos evento que cumple esto, {(4,1),(1,4)}, luego la probabilidad sera de $\frac{2}{36}$.
 
-El vector definido arriba sera cocebido como discreto, dada que solo posee un numero contable de posibles valores. 
+El vector definido arriba sera cocebido como **discreto**, dada que solo posee un numero contable de posibles valores. 
 
 **FUNCION DE MASA DE PORBABILIDAD CONJUNTA:** sea $(X,Y)$ un vector aleatorio de dimension 2 discreto. la funcion $f(x,y)$ de $R^{2}$ a $R$ se define como $f(x,y) = P(X = x, Y = y)$.
 Se suele notar como $f_{X \ Y}(x,y)$.
 
-esta pmf define la probabilidad de distribucion 
+esta pmf define la probabilidad de distribucion del vector aleatorio $(X,Y)$. Al igual que para la propabilidad univariada, esta funcion tambien describe la distribucion de este vector. 
+
+para cualquier otro vector $(x,y)$ tenemos que $f(x,y) = P(X = x, Y = y) = 0$
+
+Esta funcion de probabilidad conjunta puede ser usada para computar la probabilidad de cualquier evento definido en terminos de $(X,Y)$. Sea $A$ cualquier subcojunto de $R^2$, luego:
+
+- $P((X,Y) \in A) = \sum_{(x,y) \in A} f(x,y)$
+
+Como $(X,Y)$ es discreta para, $f(x,y)$ es distinto de zero para la mayoria de los puntos contables $(x,y)$.
+
+## ESPERANZA PARA MULTIVARIABLES: 
+se computa similar al valor para univariables. sea $g(x,y)$ una funcion en los reales, definida para todos los posibles valores de $(x,y)$. Luego $g(X,Y)$ es tambien una variable aleatoria y su esperanza sera $EG(X,Y)$. Donde:
+
+- $Eg(X,Y) = \sum_{(x,y) \in R^2} g(x,y)f(x,y)$
+
+**PROPIEDADES:**
+Para todo $(x,y)$, $0 \leq f(x,y)$, dado que $$ $ es un funcion de prbailidad.Donde como $(X,Y)$ esta dentro de $R^2$ luego:
+
+- $\sum_{(x,y)\in R^2 } = f(x,y) = P((X,Y) \in R^2) = 1$
+
+Esto implica que toda funcion no negativa de $R²$ a $R$ que es nonegatica para la mayoria de los valores contables $(x,y)$ y que suma 1, sera la **funcion de masa de probabilidad** for otra varibale bivaluada. 
+Esto permite definir la **pmf** sin saber el espacio **S** en el que estamos trabajando. 
+
+Dentro de esta idea , tanto **X** como **Y** siguen siendo una variable aleatoria, por lo que tambien posee una funcion de probilidad que las describa. Podemos tener una funcion de distribucion de las mismas, en el contexto de la funcion bivaluada.
+
+Sea $(X,Y)$ una un vector discreto vivariable con una funcion de probabilidad conjunto $f_{x,y}(x,y)$. Luego la **pmf marginal** de **X** e **Y**, sera $f_x(x) = P(X = x)$ y $f_y(y) = P(Y = y)$, estan dadas por:
+
+- $f_x(x) = \sum_{y \in R} f_{x,y}(x,y)$
+- $f_y(y) = \sum_{x \in R} f_{x,y}(x,y)$
+
+Esta funciones solo puede ser ultilizada para computar esperanza o probabilidad de una de las dos variables, y no las dos al mismo tiempo. 
+
+pasemos a varibable continuas:
+
+## FUNCION DE DENSIDAD DE PROBABILIDAD CONJUNTA:
+una funcion $f(x,y)$ de $R²$ a $R$ se la llama **funcion de densidad de probilida conjunta** de la vector viraibale aleatorio $(X,Y)$, si para todo $A \subset R²$,
+
+- $P((X,Y) \in A) = \int_{A} \int f(x,y) dx \ dy $
+
+Esta notacion e la integral, nos queire decir que los limites de integracion sera sobre todos los valores de $(x,y) \in A$.
+
+Para el caso de la esperanza, tenemos que:
+
+-  $Eg(X,Y) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} g(x,y) \ f(x,y) dx \ dy$
+
+las funciones de probabilidad marginal tambien se definen como en el caso discreto:
+
+- $f_x(x) = \int_{-\infty}{\infty}f(x,y) \ dy$
+- $f_y(y) = \int_{-\infty}{\infty}f(x,y) \ dx$
+
+## DISTRBUCION CONDICIONAL E INDEPENDENCIO
+Una cuestion importante con respecto a la variables aleatorias conjuntas, es que tenemos otro tipo de nocion condicional. Podemos computar le probabilidad de **Y** dado un conocimiento sobre **X**, a partir de la distrbucion cojunto de $(x,y)$. Auqnue, hay ocasiones donde las observacion sobre **X** no nos dicen nada de **Y**.
+
+sea $(X,Y)$ un vector bivaluado discreto con uan funcion de probabilidad conjunto $f(x,y)$ y una funcion marginal $f_x(x)$ y $f_y(y)$. Para todo $x$ tal que $P(X = x) = f_x(x) > 0$, la **pmf** condicional de **Y** dado que **X = x** de sera:
+
+- $f(y|x) = P(Y = y | X = x) = \frac_{f(x,y)}{f_x(x)}$
+
+A su vez, para todo $y$ tal que $P(Y = y) = f_y(y) > 0$, la **pmf** condicional para todo $X$ dado que $Y = y$, sera:
+
+- $f(x|y) = P(X = x | Y = y) = \frac_{f(x,y)}{f_y(y)}$
+
+Dada la defincion para una sola variable, tenemos que, para el primer caso que tenemos, el evento $A$ sera ${Y = y}$ y el evento $B$ sera ${X = x}$.
+
+esta funcion cumplira con las mismas probabilidades que otras **p
+mf**
+
+Para la defincion de variables continuas, vale la misma de defincion, cambiando **pmf** por **pdf**.
+
+### INDEPENDENCIA
+Sea $(X,Y)$ un vector bivariable aleatorio con una funcion de probabilidad conjunto **pdf** o **pmf**, funciones de probabilidad marginal $f_x(x)$ y $f_y(y)$ luego **X** e **Y** son varibales independientes si para todo $x \in R$ y $y \in R$ tengo que:
+
+- $f(x,y) = f_x(x) . f_y(y)$
+
+Esto logra la probilidad condicional sea:
+
+- $f(y|x) = f_y(y)$
+
+### LEMMA
+sea $(X,Y)$ un vector bivariable aleatorio con una funcion de probilidad **pmf** o **pdf**. Luego $X$ e $Y$ son variables independientes aleatorias si y solo si existen funciones $g(x)$ y $h(y)$ tal que para todo $x \in R$ y $y \in R$ tengo que :
+
+- $f(x,y) = g(x).h(y)$
+
+![Texto alternativo](Teorema-independencia.png)
+
