@@ -462,7 +462,7 @@ Luego puedo definir dos variables aleatorias, X e Y tal que:
 - $X = \text{la suma de ambos dados}$
 - $Y = |\text{la diferencia de ambos dados}|$
 
-De esta forma tenes un vector aleatoria de dimension dos de la forma $(X,Y)$. Ahora debemos definir las probabilidad des los eventos en terminos de $(X,Y)$, por ejemplo, que representa $P(X = 5 & Y = 3)$. En este casos solo tenemos dos evento que cumple esto, {(4,1),(1,4)}, luego la probabilidad sera de $\frac{2}{36}$.
+De esta forma tenes un vector aleatoria de dimension dos de la forma $(X,Y)$. Ahora debemos definir las probabilidad des los eventos en terminos de $(X,Y)$, por ejemplo, que representa $P(X = 5, Y = 3)$ . En este casos solo tenemos dos evento que cumple esto, {(4,1),(1,4)}, luego la probabilidad sera de $\frac{2}{36}$.
 
 El vector definido arriba sera cocebido como **discreto**, dada que solo posee un numero contable de posibles valores. 
 
@@ -485,7 +485,7 @@ se computa similar al valor para univariables. sea $g(x,y)$ una funcion en los r
 - $Eg(X,Y) = \sum_{(x,y) \in R^2} g(x,y)f(x,y)$
 
 **PROPIEDADES:**
-Para todo $(x,y)$, $0 \leq f(x,y)$, dado que $$ $ es un funcion de prbailidad.Donde como $(X,Y)$ esta dentro de $R^2$ luego:
+Para todo $(x,y)$, $0 \leq f(x,y)$, dado que es un funcion de prbailidad.Donde como $(X,Y)$ esta dentro de $R^2$ luego:
 
 - $\sum_{(x,y)\in R^2 } = f(x,y) = P((X,Y) \in R^2) = 1$
 
@@ -506,7 +506,7 @@ pasemos a varibable continuas:
 ## FUNCION DE DENSIDAD DE PROBABILIDAD CONJUNTA:
 una funcion $f(x,y)$ de $R²$ a $R$ se la llama **funcion de densidad de probilida conjunta** de la vector viraibale aleatorio $(X,Y)$, si para todo $A \subset R²$,
 
-- $P((X,Y) \in A) = \int_{A} \int f(x,y) dx \ dy $
+- $P((X,Y) \in A) = \int_{A} \int_{A} f(x,y) dx \ dy $
 
 Esta notacion e la integral, nos queire decir que los limites de integracion sera sobre todos los valores de $(x,y) \in A$.
 
@@ -519,16 +519,16 @@ las funciones de probabilidad marginal tambien se definen como en el caso discre
 - $f_x(x) = \int_{-\infty}{\infty}f(x,y) \ dy$
 - $f_y(y) = \int_{-\infty}{\infty}f(x,y) \ dx$
 
-## DISTRBUCION CONDICIONAL E INDEPENDENCIO
+## DISTRBUCION CONDICIONAL E INDEPENDENCIA
 Una cuestion importante con respecto a la variables aleatorias conjuntas, es que tenemos otro tipo de nocion condicional. Podemos computar le probabilidad de **Y** dado un conocimiento sobre **X**, a partir de la distrbucion cojunto de $(x,y)$. Auqnue, hay ocasiones donde las observacion sobre **X** no nos dicen nada de **Y**.
 
 sea $(X,Y)$ un vector bivaluado discreto con uan funcion de probabilidad conjunto $f(x,y)$ y una funcion marginal $f_x(x)$ y $f_y(y)$. Para todo $x$ tal que $P(X = x) = f_x(x) > 0$, la **pmf** condicional de **Y** dado que **X = x** de sera:
 
-- $f(y|x) = P(Y = y | X = x) = \frac_{f(x,y)}{f_x(x)}$
+- $f(y|x) = P(Y = y | X = x) = \frac{f(x,y)}{f_x(x)} $
 
 A su vez, para todo $y$ tal que $P(Y = y) = f_y(y) > 0$, la **pmf** condicional para todo $X$ dado que $Y = y$, sera:
 
-- $f(x|y) = P(X = x | Y = y) = \frac_{f(x,y)}{f_y(y)}$
+- $f(x|y) = P(X = x | Y = y) = \frac{f(x,y)}{f_y(y)}$
 
 Dada la defincion para una sola variable, tenemos que, para el primer caso que tenemos, el evento $A$ sera ${Y = y}$ y el evento $B$ sera ${X = x}$.
 
@@ -546,10 +546,72 @@ Esto logra la probilidad condicional sea:
 
 - $f(y|x) = f_y(y)$
 
+De esta idea surge la siguiente definicion:
+**Vector aleatorio mutuamente independiente:** sea $X_1, ..., X_n$ un vector aleatorio con una pdf o mpf conjunta $f(x_1,.., x_n)$. sea $f_{x_i}(x_i)$ la pdf o pmf marginal de $X_i$. $X_1,..., X_n$ son mutuamente independientes si, para todo $(x_1,...,x_n):$
+
+- $f(x_1,...,x_n) = f_{x_1}(x_1)....f_{x_n}(x_n) = \prod_{i=1}^{n} f_{x_i}(x_i)$
+
+Esto implica que el valor de algunas coordenadas no nos da ninguna informacion sobre los valores de otras. 
+
 ### LEMMA
 sea $(X,Y)$ un vector bivariable aleatorio con una funcion de probilidad **pmf** o **pdf**. Luego $X$ e $Y$ son variables independientes aleatorias si y solo si existen funciones $g(x)$ y $h(y)$ tal que para todo $x \in R$ y $y \in R$ tengo que :
 
 - $f(x,y) = g(x).h(y)$
 
 ![Texto alternativo](Teorema-independencia.png)
+
+## SAMPLEO ALEATORIO O MUESTREO ALEATORIO
+La siguiente defincion establece que es el **muestreo aleatorio** o **sampleo aleatorio**
+**DEFINICION:** Las variables aleatorias $X_1,..., X_n$ se las llama como **muestreo aleatorio** de tamaño **n** de la **poblacion** $f(x)$ si $X_1,..., X_n$ son variables aletorias mutuamente independientes y la pdf o pmf marginal para cada $X_i$ es la misma funcion $f(x)$. Se las puede llamar tambien como **variables aleatorias independientes e indenticamente distribuidas**. Esto se denomina como **iid**.
+
+Dadoi la deficion de independencia, tenemos que la pdf o pmf conjunta sera:
+
+- $f(x_1,...,x_n) = f(x_1).f(x_2)...f(x_n) = \prod_{i=1}^{n} f(x_i)$
+
+La definicion plantea se la seuel pensa como muestrear de una poblacion infinita. Se puede pensar como se obtiene los valores $X_1,....,X_n$ de form secuencial. Primero, se realiza el experimento y se observa $X_1 = x_i$.  Luego se repite y se obtiene $X_2 = x_2$. Donde la independencia hace que $X_1$ no afecte $X_2$.
+Para una poblacion finita puede no ser necesaria, dependiendo en como se haya realizado la recoleccion de la informacion.
+
+### SUMAS DE VARIABLES ALEATORIAS DE UN MUESTRO ALEATORIO
+Por lo general se suele computar un resumen de los valores. Todo resumen se expresa como una funcion $T(x_1,...,x_n)$, donde su dominio inlcuye el espacio de muestro del vector aleatorio $(X_1,..,X_n)$
+
+**ESTADISTICO:** sea $X_1, ..X_n$ un muestreo aleatorio de tamaño **n** de una poblacion y sea $T(x_1,...,x_n)$ una funcion cuyo dominio  incluye al espacio de muestreo $(X_1,..,X_n)$. Luego el vector aleatorio $Y =  T(X_1,....,X_n)$ es lo llama **estadistico**. La distribucion de probabilidad del **estadistico** $Y$ se lo llama ***dsitrbucion de muestro de Y**.
+
+La unica restriccion de esta definicion es que no puede tener solo un parametro. 
+
+**ESPERANZA DEL MUESTREO:** es el promedio aritmetico de los valores de un muestreo aleatorio. se denota como:
+
+- $\bar{x} = \frac{X_1+...+X_n}{n} = \frac{1}{n}.\sum_{i=1}^{n}X_i$
+
+**VARIANZA DEL MUESTREO:** Es el estadistico definido por:
+
+- $S² = \frac{1}{n-1}.\sum_{i=1}{n}(X_i-\bar{X})²$
+
+- Teoremas importantes:
+
+![Texto alternativo](Teorema-Descomposicion-Varianza.png)
+
+![Texto alternativo](Teorema-Descomposicion-Varianza-2.png)
+
+![Texto alternativo](Teorema-Esperanza-Varianza.png)
+
+**CONVERGENCIA EN PROBABILIDAD:**
+Una secuencia de variables aleatorias $X_1,...X_n$ converge en probabilidad a una variable aleatoria $X$ si, para todo $\epsilon > 0$,
+
+- 
+
+En este tipo de definciones $X_1, .., X_n$ no son independientes o se distribuyen de forma indetica, como en un muestreo aleatorio. 
+
+Agregar teoremas 5.5.1, 5.5.2, 5.5.10, 5.5.14
+
+## ESTIMACION PUNTUAL
+Cuando se realiza un muestro de una poblacion descripta por una pdf o pmf de la forma $f(x| \theta)$, el conocimiento de $\theta$ no da informacion sobre toda la poblacion. Por lo tatno, es natural buscar un metodo para encontar un buen estimador de $\theta$.
+Estimacion puntual busca inferir este parametro deconocido. Si sabemos que $X_1, ..X_n$ tiene una distribucion pdf o pmf de la forma $f(x|\theta)$, sabemos de que familia vienen los datos pero no el valor del parametro. 
+
+**ESTIMADOR PUNTUAL:** Sea cualquier funcion $W(X_1,...X_n)$ de una muestra. Es decis todo **estadistico** sera una estimacion puntual.
+
+por lo general diferenciamos entres **estimador** y **estimado**. Mientras que el primero es una funcion, el segundo es solo un valor del estimador sobre una muestra. Por lo general no habra ningun candidato obvio para un estimador puntual.
+Habra algunos metodos para poder conseguir estos estimadores:
+
+**METODO DE MOMENTOS:** 
+Sea $X_1,..,X_n$ un muestreo de una poblacion 
 
