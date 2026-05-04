@@ -612,6 +612,60 @@ Estimacion puntual busca inferir este parametro deconocido. Si sabemos que $X_1,
 por lo general diferenciamos entres **estimador** y **estimado**. Mientras que el primero es una funcion, el segundo es solo un valor del estimador sobre una muestra. Por lo general no habra ningun candidato obvio para un estimador puntual.
 Habra algunos metodos para poder conseguir estos estimadores:
 
+Por lo general a veces es buen tener un metodo para llegar a estos estimadores, aunque a veces la intuicion nos puede llevar a un buen resultado.
 **METODO DE MOMENTOS:** 
-Sea $X_1,..,X_n$ un muestreo de una poblacion 
+Sea $X_1,..,X_n$ un muestreo de una poblacion con una **pdf** o **pmf** de la forma $f(x|\theta_{1}...\theta_{k})$. Los estimadores en este metodo se ecuentranm equiparando los primeros **k** momentos de sampleo a los correspondientes **k** momnentos de poblaciones. y resolvienod el sistema de ecuaciones simultaneas: 
 
+![Texto alternativo](Estimador-Metodo-Momentos.png)
+
+El metodo de los momentos puede ser muy util para obtener aproximaciones a distrbuciones estadisticas. Los momentos de una dsitrubion de cualquier estadistico pueden corresponder con otras distrbuciones, pero en la practica conviene utilizar distribuciones parecidas. 
+
+**ESTIMADOR DE MAXIMA PROBABILIDAD/VEROSIMILITUD**
+Es la tecnica mas popular para genrar estimadores. Recordemos que para $X_1, ..., X_n$ es un idd de un muestreo de una poblacion con una pdf o pmf de la forma $f(X|\theta_{1},....\theta_{k})$, la funcion de likehood sera:
+
+- $L(\theta| x) = L(\theta_{1},.., \theta_{k}|x_1,...,x_n) = \prod_{i=1}^{n} f(x_{i}|\theta_{1},.., \theta_{k})$
+
+Para cada punto del muestreo, sea $\theta(x)$ sea un valor del parámetro en el que $L(\theta|x)$ alcanza su máximo en función de $\theta$, manteniendo $x$ fijo. Un maximo estimador de verosimilitud del parametro $\theta$ basado en el sample $X$ sera $\theta(X)$
+Notemos que por cosntruccion en rango de MLE concinde con el rango del parametro. El MLE sera un estimador resonable, tal que sera el punto del parametro donde el muestro obsrevado es mas probable. 
+
+El problema de este metodo viene del problema de hallar el maximo:
+- El primer probleam es el de encontrar el maximo global y verdaderamente verificar que este sea un maximo.
+- El segundo relacionado con la sensibilidad numerica. Que tan sensible es el estimado frente a pequeños cambios? Hya caos donde un muestreo distinto puede producir un MLE bastante diferente.
+
+Si la funcion de verosimilitud es diferencial sonbre $\theta_{i}$, posibles candidate para la MLE seran los valores $(\theta_{i},...,\theta_{k})$ que resuelven:
+
+- $\frac{\alpha}{\alpha \theta} L(\theta | x) = 0 $ para $i =1,...,k$
+
+Otra forma de resolver esto es dejar de lado la diferenciacion e ir directo a buscar un maximo. Es mas sencillo, pero dificil de implementar porque no hya reglas para seguir. La idea siempre es buscar un techo maximo para la funcion de verosimilitud y establcer que solo hay un punto mediante el cual el techo es alcanzado. 
+
+### METODOS PARA EVALUAR ESTIMADORES
+El problema ahora es que, dado que tenemos varios metodos para estimar los parametros, como podemos encontrar el mejor estimador. 
+
+**ERROR CUADRATCIO(MSE):** El mean squarred error de un estimador **W** de un parametri $\theta$ es la funcion de $\theta$ definida por $E_{\theta}(W-\theta)^2$
+Notar que MSE mide el promedio de la diferencia de cuadrado entre el estimador $W$ y el parametro $\theta$
+Esta medida posee dos ventjas con respecto a otros medidores:
+- Es facil de trackear de forma analitica
+- Posee un medida imporante que se puede definir como **sesgo**
+
+**SESGO:** EL sesosgo de un estimador de puntos $W$ de un parametro $\theta$ es la diferencia entre el valor espeador de $W$ y $\theta$. Un estimador que posee un sesgo igual a cero o cercano a el se dice que **no tiene sesgo**.
+
+## INTERVALO DE CONFIANZA
+**INTERVALO DE CONFIANZA:** sea $X_1, ... ,X_n$ una muestra aleatoria de una distrbucion con parametro $\theta$. dads dos funciones de la muestra $a(X_1,...,X_n)$ y $b(X_1,...,X_n)$ tales que:
+
+- $P(a(X_1,...,X_n) \leq \theta \leq b(X_1,...,X_n)) = 1 - \alpha$
+ 
+con $\alpha$ chico, entonces el intervalo $[a(X_1,...,X_n);b(X_1,...,X_n)]$ se denomina intervalo de confianza de nivel $1-\alpha$ para el parametro $\theta$
+ 
+El intervalo de confianza sera una estimacion para un parametro. Dado:
+
+- $P(X-1.96\frac{\sigma}{n} \leq \mu \leq X + 1.96\frac{\sigma}{n}) = 0.95$
+
+implica que:
+- La probabilidad de que el intervalo de confianza contenga el valor $\mu$ es de 95%
+- dados muchas realizaciones de la variable aleatoria, el 95% de ellas incluira $\mu$
+
+Metodo para obtener intervalo de confianza: Sea $X_1,...,X_n$ una muestra de una distribucion que depende de un parametro $\theta$. Supongamos que existe una funcion $T(X_1,...,X_n,\theta)$ cuya distribucion no depende de $\theta$ ni de ningun otro parametro desconocido. Entonces dado $\alpha$, existen dos valores $a$ y $b$ tales que:
+
+- $P(a \leq T(X_1,...,X_n,\theta) \leq b) = 1 - \alpha$
+
+a partir de lo cual se puede obtener un intervalo de confianzan de nivel $1 - \alpha$ para $\theta$. La funcion $T(X_1,...,X_n,\theta)$ se denomina pivote.
