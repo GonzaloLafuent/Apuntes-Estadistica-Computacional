@@ -245,6 +245,10 @@ En resumen en la esperanza sera un valor que nos indica el valor promedio que se
 
 la desviacion estandar de **X** se define como $\sqrt {VAR(X)}$
 
+para el calculo de $VAR X$ suele ser util usar una formula alternativa, tal que:
+
+- $VAR \ X = EX² - (EX)²$ 
+
 **FAMILIAS DE DISTRIBUCIONES COMUNES**
 Para poder modelar poblaciones, en general trabajamos con con familias de distribuciones. Las familias son idexadas por mas de un parametro. 
 Cada una por lo general tendra una esperanza y varianza definida, donde para cada una habra aplicaciones basicas definidas. 
@@ -440,11 +444,21 @@ En este caso no existe la media en esta distribucion. Este tipo de distribucion 
 **DISTRIBUCION EXPONENCIAL**
 Es un caso especial de la distribucion gamma. la pdf tendra la siguiente forma:
 
-- $f(x|p) = \frac{1}{\Gamma(p/2)2^{p/2}}x^{(p/2)-1}e^{-x/2}$
+- $f(x|\lambda) = \lambda e^{-\lambda x} $
+
+a veces se puede pensar usando la transformacion $B = \frac{1}{\lambda}$, de la siguiente manera:
+
+- $f(x|B) = \frac{1}{B} e^{-\frac{x}{B}} $
 
 La distrbucion exponencial puede ser utilizada para modelar fenomenos de vida. Es analoga al caso de la distrbucion geometrica en el caso de las discretas.
+Luego se cumple que para $s > t >= 0$ vale que:
 
-tiene la falta de memoria, por que sirve para modelar procesos de vida???
+- $P(X > s|X > t) = P(X > s-t)$
+
+Tambien tenemos que:
+
+- $EX = \frac{1}{\lambda}$
+- $VAR X = \frac{1}{\lambda²}$
 
 ## INECUACIONES E IDENTIDADES
 **DESIGUALDAD DE CHERYSHEV:** dada una variable independiente **X** y una funcion$ g(x)$ no negativa. luego para todo $r >0$ tengo que:
@@ -519,7 +533,7 @@ las funciones de probabilidad marginal tambien se definen como en el caso discre
 - $f_x(x) = \int_{-\infty}{\infty}f(x,y) \ dy$
 - $f_y(y) = \int_{-\infty}{\infty}f(x,y) \ dx$
 
-## DISTRBUCION CONDICIONAL E INDEPENDENCIA
+## DISTRIBUCION CONDICIONAL E INDEPENDENCIA
 Una cuestion importante con respecto a la variables aleatorias conjuntas, es que tenemos otro tipo de nocion condicional. Podemos computar le probabilidad de **Y** dado un conocimiento sobre **X**, a partir de la distrbucion cojunto de $(x,y)$. Auqnue, hay ocasiones donde las observacion sobre **X** no nos dicen nada de **Y**.
 
 sea $(X,Y)$ un vector bivaluado discreto con uan funcion de probabilidad conjunto $f(x,y)$ y una funcion marginal $f_x(x)$ y $f_y(y)$. Para todo $x$ tal que $P(X = x) = f_x(x) > 0$, la **pmf** condicional de **Y** dado que **X = x** de sera:
@@ -571,12 +585,16 @@ Dadoi la deficion de independencia, tenemos que la pdf o pmf conjunta sera:
 La definicion plantea se la seuel pensa como muestrear de una poblacion infinita. Se puede pensar como se obtiene los valores $X_1,....,X_n$ de form secuencial. Primero, se realiza el experimento y se observa $X_1 = x_i$.  Luego se repite y se obtiene $X_2 = x_2$. Donde la independencia hace que $X_1$ no afecte $X_2$.
 Para una poblacion finita puede no ser necesaria, dependiendo en como se haya realizado la recoleccion de la informacion.
 
+las variables aletorias $X_1,..,X_n$ seran indepediente debido a que el proceso para elegir cualquier $X_i$ es el mismo, mas alla del valor que se elija para cualquiera de las otras variables.
+
 ### SUMAS DE VARIABLES ALEATORIAS DE UN MUESTRO ALEATORIO
 Por lo general se suele computar un resumen de los valores. Todo resumen se expresa como una funcion $T(x_1,...,x_n)$, donde su dominio inlcuye el espacio de muestro del vector aleatorio $(X_1,..,X_n)$
 
 **ESTADISTICO:** sea $X_1, ..X_n$ un muestreo aleatorio de tamaño **n** de una poblacion y sea $T(x_1,...,x_n)$ una funcion cuyo dominio  incluye al espacio de muestreo $(X_1,..,X_n)$. Luego el vector aleatorio $Y =  T(X_1,....,X_n)$ es lo llama **estadistico**. La distribucion de probabilidad del **estadistico** $Y$ se lo llama ***dsitrbucion de muestro de Y**.
 
 La unica restriccion de esta definicion es que no puede tener solo un parametro. 
+
+Algunos de los estadisticos mas comunes seran:
 
 **ESPERANZA DEL MUESTREO:** es el promedio aritmetico de los valores de un muestreo aleatorio. se denota como:
 
@@ -597,19 +615,42 @@ La unica restriccion de esta definicion es que no puede tener solo un parametro.
 **CONVERGENCIA EN PROBABILIDAD:**
 Una secuencia de variables aleatorias $X_1,...X_n$ converge en probabilidad a una variable aleatoria $X$ si, para todo $\epsilon > 0$,
 
-- 
+![Texto alternativo](Convergencia-De-Probabilidad.png)
 
 En este tipo de definciones $X_1, .., X_n$ no son independientes o se distribuyen de forma indetica, como en un muestreo aleatorio. 
 
-Agregar teoremas 5.5.1, 5.5.2, 5.5.10, 5.5.14
+**LEY DEBIL DE NUMEROS GRANDES:**
+![Texto alternativo](Ley-Debil-Numeros-Grandes.png)
+
+**CONVERGENCIA A DISTRBUCION:**
+![Texto alternativo](Convergencia-A-Distribucion.png)
+
+**TEOREMA CETRAL DEL LIMITE:**
+![Texto alternativo](Teorema-Del-Limite-Central.png)
+
+Lo que nos dice es que medida que aumenta el tamaño de una muestra, la distribución de su media, $\bar{X}$, tiende a seguir una distribución normal (en forma de campana), sin importar cómo se distribuyan originalmente los datos de la población
+
+esto nos dice que si tengo una muestra aleatoria de la forma $X_1,...,X_n$ de cualquier distribucion con una media $\mu$ y una varianza de la forma $ \sigma²$, entonces para cualquier tamaño de la muestra grande, tengo que:
+
+- $\bar{X} -> N(\mu,\frac{\sigma²}{n})$
 
 ## ESTIMACION PUNTUAL
-Cuando se realiza un muestro de una poblacion descripta por una pdf o pmf de la forma $f(x| \theta)$, el conocimiento de $\theta$ no da informacion sobre toda la poblacion. Por lo tatno, es natural buscar un metodo para encontar un buen estimador de $\theta$.
+Cuando se realiza un muestro de una poblacion descripta por una pdf o pmf de la forma $f(x| \theta)$, el conocimiento de $\theta$ no da informacion sobre toda la poblacion. Por lo tanto, es natural buscar un metodo para encontar un buen estimador de $\theta$.
 Estimacion puntual busca inferir este parametro deconocido. Si sabemos que $X_1, ..X_n$ tiene una distribucion pdf o pmf de la forma $f(x|\theta)$, sabemos de que familia vienen los datos pero no el valor del parametro. 
+La idea es, a partir de una distribucion que depende de parametros desconocidos, poder encontrar informacion sobre ellos usando una muetra. 
 
 **ESTIMADOR PUNTUAL:** Sea cualquier funcion $W(X_1,...X_n)$ de una muestra. Es decis todo **estadistico** sera una estimacion puntual.
 
-por lo general diferenciamos entres **estimador** y **estimado**. Mientras que el primero es una funcion, el segundo es solo un valor del estimador sobre una muestra. Por lo general no habra ningun candidato obvio para un estimador puntual.
+por lo general diferenciamos entres **estimador** y **estimado/estimado puntual**. Mientras que el primero es una funcion, el segundo es solo un valor del estimador sobre una muestra. Por lo general no habra ningun candidato obvio para un estimador puntual.
+El estimador puntual se representa como :
+- $\hat{\theta} = T(X_1,...,X_n)$
+
+Donde T sera un funcion conocida y $X_1,...,X_n$ seran variables aleatorias. Luego de observar una muestra, obtengo $x_1,....,x_n$. luego la estimacion puntual sera:
+
+- $\hat{\theta} = T(x_1,...,x_n)$
+
+Cuando la muestra cambia, tambien cambia el estimador. El parametro es fijo, el estimador es aleatorio.
+
 Habra algunos metodos para poder conseguir estos estimadores:
 
 Por lo general a veces es buen tener un metodo para llegar a estos estimadores, aunque a veces la intuicion nos puede llevar a un buen resultado.
@@ -618,18 +659,27 @@ Sea $X_1,..,X_n$ un muestreo de una poblacion con una **pdf** o **pmf** de la fo
 
 ![Texto alternativo](Estimador-Metodo-Momentos.png)
 
-El metodo de los momentos puede ser muy util para obtener aproximaciones a distrbuciones estadisticas. Los momentos de una dsitrubion de cualquier estadistico pueden corresponder con otras distrbuciones, pero en la practica conviene utilizar distribuciones parecidas. 
+El metodo de los momentos puede ser muy util para obtener aproximaciones a distrbuciones estadisticas. Los momentos de una dsitribucion de cualquier estadistico pueden corresponder con otras distrbuciones, pero en la practica conviene utilizar distribuciones parecidas. 
+
+En resumen la idea es:
+- Escribir momentos teoricos de la distribucion
+- igualarlos con momentos muestrales
+- En base a eso depejar el parametro
+
+Notacion, cuando hablamos de $\hat{X}$ nos referimos al promedio aletorio, denominado como:
+
+- $\hat{X} = \frac{1}{n} \sum_{i=1}^{n} X_i$
 
 **ESTIMADOR DE MAXIMA PROBABILIDAD/VEROSIMILITUD**
-Es la tecnica mas popular para genrar estimadores. Recordemos que para $X_1, ..., X_n$ es un idd de un muestreo de una poblacion con una pdf o pmf de la forma $f(X|\theta_{1},....\theta_{k})$, la funcion de likehood sera:
+Es la tecnica mas popular para generar estimadores. Recordemos que para $X_1, ..., X_n$ es un idd de un muestreo de una poblacion con una pdf o pmf de la forma $f(X|\theta_{1},....\theta_{k})$, la funcion de likehood sera:
 
 - $L(\theta| x) = L(\theta_{1},.., \theta_{k}|x_1,...,x_n) = \prod_{i=1}^{n} f(x_{i}|\theta_{1},.., \theta_{k})$
 
-Para cada punto del muestreo, sea $\theta(x)$ sea un valor del parámetro en el que $L(\theta|x)$ alcanza su máximo en función de $\theta$, manteniendo $x$ fijo. Un maximo estimador de verosimilitud del parametro $\theta$ basado en el sample $X$ sera $\theta(X)$
-Notemos que por cosntruccion en rango de MLE concinde con el rango del parametro. El MLE sera un estimador resonable, tal que sera el punto del parametro donde el muestro obsrevado es mas probable. 
+Para cada punto del muestreo, sea $\hat{\theta(x)}$ sea un valor del parámetro en el que $L(\theta|x)$ alcanza su máximo en función de $\theta$, manteniendo $x$ fijo. Un maximo estimador de verosimilitud del parametro $\theta$ basado en el sample $X$ sera $\hat{\theta(X)}$
+Notemos que por cosntruccion en rango de MLE conincide con el rango del parametro. El MLE sera un estimador rezonable, tal que sera el punto del parametro donde el muestro obsrevado es mas probable. 
 
 El problema de este metodo viene del problema de hallar el maximo:
-- El primer probleam es el de encontrar el maximo global y verdaderamente verificar que este sea un maximo.
+- El primer problema es el de encontrar el maximo global y verdaderamente verificar que este sea un maximo.
 - El segundo relacionado con la sensibilidad numerica. Que tan sensible es el estimado frente a pequeños cambios? Hya caos donde un muestreo distinto puede producir un MLE bastante diferente.
 
 Si la funcion de verosimilitud es diferencial sonbre $\theta_{i}$, posibles candidate para la MLE seran los valores $(\theta_{i},...,\theta_{k})$ que resuelven:
@@ -637,6 +687,12 @@ Si la funcion de verosimilitud es diferencial sonbre $\theta_{i}$, posibles cand
 - $\frac{\alpha}{\alpha \theta} L(\theta | x) = 0 $ para $i =1,...,k$
 
 Otra forma de resolver esto es dejar de lado la diferenciacion e ir directo a buscar un maximo. Es mas sencillo, pero dificil de implementar porque no hya reglas para seguir. La idea siempre es buscar un techo maximo para la funcion de verosimilitud y establcer que solo hay un punto mediante el cual el techo es alcanzado. 
+
+La idea de ver distintos momemntos nos permite analizar distintos aspectos de la distribucion. No toda la informacion va a estar en el promedio. Si el modelo posee varios parametros, necesitaremos varios momentos, donde cada momento te da una ecuacion.
+Si solo miramos el promedio, distintas distribuciones tienden a parecer iguales. 
+
+### IDEAS IMPORTANTES DE ESTIMACION
+No estamos estimando directemante a partir de un dato, sino a patir del comportamiento cojunto de la muestra. cada $X_1$ es una observacion. El estimador usa toda la muestra para reconstruir informacion sobre el parametro. 
 
 ### METODOS PARA EVALUAR ESTIMADORES
 El problema ahora es que, dado que tenemos varios metodos para estimar los parametros, como podemos encontrar el mejor estimador. 
@@ -650,12 +706,26 @@ Esta medida posee dos ventjas con respecto a otros medidores:
 **SESGO:** EL sesosgo de un estimador de puntos $W$ de un parametro $\theta$ es la diferencia entre el valor espeador de $W$ y $\theta$. Un estimador que posee un sesgo igual a cero o cercano a el se dice que **no tiene sesgo**.
 
 ## INTERVALO DE CONFIANZA
-**INTERVALO DE CONFIANZA:** sea $X_1, ... ,X_n$ una muestra aleatoria de una distrbucion con parametro $\theta$. dads dos funciones de la muestra $a(X_1,...,X_n)$ y $b(X_1,...,X_n)$ tales que:
+**INTERVALO DE CONFIANZA:** sea $X_1, ... ,X_n$ una muestra aleatoria de una distribucion con parametro $\theta$. dadas dos funciones de la muestra $a(X_1,...,X_n)$ y $b(X_1,...,X_n)$ tales que:
 
 - $P(a(X_1,...,X_n) \leq \theta \leq b(X_1,...,X_n)) = 1 - \alpha$
  
 con $\alpha$ chico, entonces el intervalo $[a(X_1,...,X_n);b(X_1,...,X_n)]$ se denomina intervalo de confianza de nivel $1-\alpha$ para el parametro $\theta$
+
+Esto lo que nos dice es que la probilidad de que el verdadero parametro $\theta$ dentro del intervalo $[a(X_1,...,X_n);b(X_1,...,X_n)]$ es de $\frac{1-\alpha}{100}$ 
  
+Se lo denomia como intervalo de confianza o estimador de intervalo. Muchas veces se puede definir un intervalo abierto, donde unos de los dos lados tiende a infinito, o tambien sin tomar ningun de ambos lados como valores posibles dentro del intervalor considerado. 
+
+La idea de usar un intervalo para estimar en vez de utilizar estimacion por punto es poder tener alguna garantia de que estoy capturando el parametro de mayor interes. 
+
+cuando hablamos de generacion de intervalor tenemos dos medidas importantes:
+
+**COBERTURA DEL ESTIMADOR:** Es la probabilidad de que un intervalo aleatorio cubra el parametro verdader $\theta$. Se denota como $P_{\theta}(\theta \in [L(X),U(X)])$ o $P_{\theta}(\theta \in [L(X),U(X)]|\theta)$
+
+**CONFIANZA DE UN INTERVALO:** es el infimo de las probabilidades de cobertura $inf_{\theta} \ P_{\theta}(\theta \in [L(X),U(X)])$
+
+Como no sabemos el valor verdaero de $\theta$, solo podemos garantizar una probabilidad de cobertura igual al infimo, lo que se llamara el **coeficiente de confianza**.
+
 El intervalo de confianza sera una estimacion para un parametro. Dado:
 
 - $P(X-1.96\frac{\sigma}{n} \leq \mu \leq X + 1.96\frac{\sigma}{n}) = 0.95$
@@ -664,8 +734,35 @@ implica que:
 - La probabilidad de que el intervalo de confianza contenga el valor $\mu$ es de 95%
 - dados muchas realizaciones de la variable aleatoria, el 95% de ellas incluira $\mu$
 
-Metodo para obtener intervalo de confianza: Sea $X_1,...,X_n$ una muestra de una distribucion que depende de un parametro $\theta$. Supongamos que existe una funcion $T(X_1,...,X_n,\theta)$ cuya distribucion no depende de $\theta$ ni de ningun otro parametro desconocido. Entonces dado $\alpha$, existen dos valores $a$ y $b$ tales que:
+**METODO PARA LA GENERACION DE INTERVALOS DE CONFIANZA** Sea $X_1,...,X_n$ una muestra de una distribucion que depende de un parametro $\theta$. Supongamos que existe una funcion $T(X_1,...,X_n,\theta)$ cuya distribucion no depende de $\theta$ ni de ningun otro parametro desconocido. Entonces dado $\alpha$, existen dos valores $a$ y $b$ tales que:
 
 - $P(a \leq T(X_1,...,X_n,\theta) \leq b) = 1 - \alpha$
 
 a partir de lo cual se puede obtener un intervalo de confianzan de nivel $1 - \alpha$ para $\theta$. La funcion $T(X_1,...,X_n,\theta)$ se denomina pivote.
+
+la idea es que como el parametro $\theta$ es desconocifdo, constriuimos una varibale intermedia denomiada pivote que combine los datos con el parametro pero que la distrbucion sea conocida o fija.
+
+Muchas veces se puede reducir a una distribucion nueva, aplicando el teorema central del limite y otras se puede recurri a la distribucion exacta. 
+
+luego usando tablas de distribuciones conocidas como la noraml, t-student, chi-cuadrda, etc, se buscan dos valores critico a y b tal que el nivel de confianza requrida sea de $\alpha - 1$ y se plantea la ecuacion:
+
+- $P(a <= V <= b) = 1-\alpha$
+
+luego se manipulan las desigualdadeds para que el parametros del cual buscamos el intervalo de confianza quede solo en el centro. 
+
+**ERROR ESTANDAR DE UN ESTIMADOR:** sera la desviacion estandar de la distribucion
+
+- $SE_{\theta} = \sqrt{Var(\theta)}$
+
+Sera la medida de la incerteza o variabilidad que tenemos en dicha estimacion.
+
+## CONSTRASTE DE HIPOTESIS
+Tenemos hipotesis sobre un valor $\mu$:
+- La primera sera la **hipotesis nula**, se la denomina como $H_0$. Esta hipotesis implica que no hay efecto. Es la hipotesis que sugierre ningun cambio partiendo desde el estado inicial.
+- La segunda se denomina como **hipotesis alternativa** y se designa como $H_1$. Se la suele llamar como hipotesis del investigador.
+
+En este contexto definimos que un **test** es una regla de decision basada en un **estadistico** o funcion de la muestra y en una **zona de rechazo**, es decir un cojunto de valores sobre los cuales se rechaza la hipotesis nula $H_0$.
+
+Frente a esto podemos tener dos tipos de errores al realizar un test:
+- **Error de tipo 1:** rechanzar $H_0$, siendo verdadera
+- **Error de tipo 2:** no rechazar $H_0$, siendo falsa
