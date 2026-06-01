@@ -757,12 +757,103 @@ luego se manipulan las desigualdadeds para que el parametros del cual buscamos e
 Sera la medida de la incerteza o variabilidad que tenemos en dicha estimacion.
 
 ## CONSTRASTE DE HIPOTESIS
-Tenemos hipotesis sobre un valor $\mu$:
-- La primera sera la **hipotesis nula**, se la denomina como $H_0$. Esta hipotesis implica que no hay efecto. Es la hipotesis que sugierre ningun cambio partiendo desde el estado inicial.
-- La segunda se denomina como **hipotesis alternativa** y se designa como $H_1$. Se la suele llamar como hipotesis del investigador.
+Consiste en otro metodo de inferencia. La idea es poder formular una hipotesis sobre la poblacion y observar si los datos observados son comptabiles con la misma.
 
-En este contexto definimos que un **test** es una regla de decision basada en un **estadistico** o funcion de la muestra y en una **zona de rechazo**, es decir un cojunto de valores sobre los cuales se rechaza la hipotesis nula $H_0$.
+Cuando vimos estimadores sabemos que ellos tambien seran consideradors como variables aleatorias, por lo tanto sera intersante tambien medir cuanto varia de muestra en muestra.
+Es importante recodar frenta esto el **error estandar(SE)** definido como:
+
+- $SE(\hat{\theta}) = \sqrt{Var(\hat{\theta})}$
+
+Y representara la incertidumbre asociada a la estimacion. Podemos obtener ditsintas ideas del mismo:
+- Si el error estendar es grande:
+  - Los estimadores fluctuan mucho
+  - Los intervalos de confianza seran anchos
+  - Sera mas dificil detectar diferencias reales
+- Si el error estandar es pequeño:
+  - Las estimacion son mas precisas
+  - Los intervalos de confianza son mas estrechos
+
+se podra encontrar un relacion directa entre los intervalos de confianza y su error estandar:
+- Para un intervalo de $68\%$ de confianza para $\mu$ es:
+  - $\bar{X} \ \pm \ SE(\bar{X})$
+- Para un intervalo de $95\%$ de confianza para $\mu$ es:
+  - $\bar{X} \ \pm \ 2SE(\bar{X})$
+- Para un intervalo de $99\%$ de confianza para $\mu$ es:
+  - $\bar{X} \ \pm \ 3SE(\bar{X})$
+
+notar que $\bar{X} \ \pm \ SE(\bar{X})$ es smilar a $\hat{\mu} = \bar{X} \ \pm \ SE(\bar{X})$. Es decir el intervalo de confianza de $68\ \%$ para el estimador $\bar{\mu}$ sera $[\bar{X} - SE(\bar{X}), \bar{X} + SE(\bar{X})]$
+
+Esto sera importante tal que el contraste de una hipptesis se podra pensar como preguntar:
+- El valor hipotetizado cae dentro de una intervalo razonable compartible con los datos?
+
+A lahora de testear una hipotesis tendremos los siguientes concepto. Basemosnos en una hipotesis realiazada sobre $\mu$:
+- La primera sera la **hipotesis nula**, se la denomina como $H_0$. Esta hipotesis implica que no hay efecto. Es la hipotesis que sugiere ningun cambio partiendo desde el estado inicial.
+Si por ejemplo $\mu$ denota el cambio promedio de la presion en sangre luego de que un paciente toma una droga, $H_{0}$ repressenta que el tratamiento no tuvo efecto, 
+- La segunda se denomina como **hipotesis alternativa** y se designa como $H_1$. Se la suele llamar como hipotesis del investigador. En este caso determina, siguiendo el ejemplo anterior, que si hubo alguna alteracion en el paciente luego de ingerir la droga. 
+
+En un problema de constraste de hipotesis se intenta decidir si, se rachaza $H_{0}$ y se acepta $H_{1}$, o 
+se acepta $H_{0}$ y se rechaza $H_{1}$
+
+En este contexto definimos que un **test** es una regla de decision basada en un **estadistico** o funcion de la muestra. El **test de una hipotesis** sera una regla que especifica:
+- Para que valores del muestreo la decision es aceptar a $H_{0}$ como verdadera.
+- Para que valores del muestreo $H_0$ se rechaza y $H_{1}$ se acepta como verdadera. 
+
+El subcojunto de muestras de un espacio sobre las cuales se reachaza $H_0$ se determina como la **zona de rechazo**, mientras que el complemento de dicha region se la conoce como al **zona de aceptacion**.
 
 Frente a esto podemos tener dos tipos de errores al realizar un test:
-- **Error de tipo 1:** rechanzar $H_0$, siendo verdadera
-- **Error de tipo 2:** no rechazar $H_0$, siendo falsa
+- **Error de tipo 1:** rechanzar $H_0$, siendo verdadera. Es lo que tambien se determina como falso positivo.
+- **Error de tipo 2:** no rechazar $H_0$, siendo falsa. Es tan bien lo que se conoce como falso negativo. 
+
+Al **error de tipo 1** se lo asocia a la varibale $\alpha$, sera el nivel de significanca, la probabilidad de falso positivo. 
+Mientras que al **error de tipo 2** se lo asocia a $\beta$, sera la probabilida de falso negativo. 
+
+Buscamos minimizar el error de tipo 1. Lo ideal seria que $\alpha  = 0$ Y $\beta = 0$, pero no pasa. Si aumento $\alpha$, baja $\beta$. si aumenta $\beta$, baja $\alpha$. La unica forma es aumentar el tamaño e la muestra, esto hace que ambos se mantegan en valores minimos. Pero mas alla de esto no se puedne minimizar las dos. 
+
+a la hora de analizar esto podemos ver distitnos tipos de hipotesis: 
+![Texto alternativo](Tipos-Hipotesis-1.png)
+
+Al hablar de cola derecha o cola izquierda depende de que hipotesis estamos queriendo modelar. En el ejemplo del auto provisto por la clase 9, como estamos sobre la hipotesis de un valor menor a 9, estamos hablando de una cola a izquierda, esa sera la region donde se ubica la zona de rechazo. 
+
+Para $X_1,...,X_n$ tal que poseen una distribucion $N(\mu,\sigma²)$. Tenemos distintos test de hipotesis de nivel $\alpha$:
+
+- Cuando la varianza es conocida:
+  - $H_0:\ \mu \ = \ \mu_{0} \ \ \ VS \ \ \ H_{1}: \ \mu > \mu_{0}$
+  - $H_0:\ \mu \ = \ \mu_{0}  \ \ \ VS \ \ \ H_{1}: \ \mu < \mu_{0}$
+  - $H_0:\ \mu \ = \ \mu_{0}  \ \ \ VS \ \ \ H_{1}: \ \mu \neq \mu_{0}$
+  - El estadistico sera: $T = \sqrt{n} \frac{\bar{X}-\mu_{0}}{\sigma_{0}}$. Donde $T$ posee una ditribuciond de la forma $N(0,1)$
+  - La region de rechazo estara dada por:
+    - $T >= Z_{\alpha}$
+    - $T <>= Z_{-\alpha}$
+    - $|T| >= Z_{\frac{\alpha}{2}}$
+
+- Cuando la varianza es desconocida:
+  - $H_0:\ \mu \ = \ \mu_{0} \ \ \ VS \ \ \ H_{1}: \ \mu > \mu_{0}$
+  - $H_0:\ \mu \ = \ \mu_{0}  \ \ \ VS \ \ \ H_{1}: \ \mu < \mu_{0}$
+  - $H_0:\ \mu \ = \ \mu_{0}  \ \ \ VS \ \ \ H_{1}: \ \mu \neq \mu_{0}$
+  - El estadistico sera: $T = \sqrt{n} \frac{\bar{X}-\mu_{0}}{S}$. Donde $T$ posee una ditribuciond de la forma $N(0,1)$
+  - La region de rechazo estara dada por:
+    - $T >= Z_{t_{n-1},\alpha}$
+    - $T <>= Z_{-t_{n-1},\alpha}$
+    - $|T| >= Z_{\frac{t_{n-1},\alpha}{2}}$
+
+- para la varianza cuando la media es desconocida:
+  - $H_0:\ \sigma² \ = \ \sigma_{0}² \ \ \ VS \ \ \ H_{1}: \ \sigma² > \sigma_{0}²$
+  - $H_0:\ \sigma² \ = \ \sigma_{0}²  \ \ \ VS \ \ \ H_{1}: \ \sigma² < \sigma_{0}²$
+  - $H_0:\ \sigma² \ = \ \sigma_{0}²  \ \ \ VS \ \ \ H_{1}: \ \sigma² \neq \sigma²_{0}$
+  - El estadistico sera: $U = \frac{(n-1)S²}{\sigma_{0}²}$. Donde $T$ posee una ditribuciond de la forma $N(0,1)$
+  - La region de rechazo estara dada por:
+    - $U >= X²_{n-1,\alpha}$
+    - $U <= X²_{n-1,1-\alpha}$
+    - $U >= X_{n-1,\frac{¸alpha}{2}}$
+
+Una forma generica de pensarlo sera:
+- $Estaditico(Z) = \frac{Error Estandar del Estimador \ \ - \ \ H_{0}}{Error Estandar del Estimador}$
+
+Pasos para constrastar hipotesis:
+- Identificar que parametro vamos a estduiar, si estamos hablando de la media, la varianza, etc.
+- Especificar hipotesis nula y alternativa
+- Fijar un valor para el nivel de significacion. Se suele usar 0.005.
+- Obtener un valor de estadistico para la muestra elegida. Dependiendo de que estemos estudiando, obtendremos un valor del estadistico que determina si rechazamos o acpetamos la hipotesis. 
+- Determinar la region de acetpacion y rechazo. Si el valor del estadistico cae dentro de la region de rechazo, entonces rechaco la hipotesis nula, y ahy certeza de que es correcta. Si cae dentro del intervalo de la region de aceptacion, no podemos rechazar la hipotesis nula. No rechazar no implica que sea correcta
+- Decidir si rechazamos o no al hipotesis nula
+- Interpreta los resultados obtenidos
