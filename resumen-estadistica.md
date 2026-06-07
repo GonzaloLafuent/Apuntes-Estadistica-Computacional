@@ -847,7 +847,7 @@ Para $X_1,...,X_n$ tal que poseen una distribucion $N(\mu,\sigma²)$. Tenemos di
     - $U >= X_{n-1,\frac{¸alpha}{2}}$
 
 Una forma generica de pensarlo sera:
-- $Estaditico(Z) = \frac{Error Estandar del Estimador \ \ - \ \ H_{0}}{Error Estandar del Estimador}$
+- $Estaditico(Z) = \frac{Estimador Muestral \ \ - \ \ H_{0}}{Error Estandar del Estimador}$
 
 Pasos para constrastar hipotesis:
 - Identificar que parametro vamos a estduiar, si estamos hablando de la media, la varianza, etc.
@@ -857,3 +857,90 @@ Pasos para constrastar hipotesis:
 - Determinar la region de acetpacion y rechazo. Si el valor del estadistico cae dentro de la region de rechazo, entonces rechaco la hipotesis nula, y ahy certeza de que es correcta. Si cae dentro del intervalo de la region de aceptacion, no podemos rechazar la hipotesis nula. No rechazar no implica que sea correcta
 - Decidir si rechazamos o no al hipotesis nula
 - Interpreta los resultados obtenidos
+
+## REGRESION LINEAL
+A veces una variable aleator+ia puede ser modelada no solo con parametros desconocidos, sino tambien con co-varibales. Esto describe las metodologias de analisis de varianza y analisis de regresion **(ANOVA)**. Se basan en asumir una relacion lineal.
+
+**ANOVA** es un de las tecnicas mas usadas ene estadistica. **ANOVA** no busca analizar varianza, sino que busca ver varitaciones dentro de la media. La herramienta de mayor reconocimiento dentro de esta corriente sera la regresion lineal. 
+
+La idea de regresion es explorar la dependencia de una variable en termino de otras. En una simple regresion lineal, la **media** de una variable aletoria **Y** se modla como uan funcion de otra variable observable **x**. LA regresion nos permite estimar la relacion entre dos variables. 
+
+En una regresion lienal simple tenemos la siguiente relacion:
+
+- $Y_{i} = \alpha + \beta x_{i} + \epsilon_{i}$
+
+donde tenemos que:
+- $Y_{i}$ sera una variable aleatoria
+- $x_{i}$ es otra varibale observable
+- $\epsilon_{i}$, sera tambien una variable aleatoria.
+- $\alpha$ es la pendiente, sera un parametro de la relacion
+- $\beta$ es la intercepcion, otra parametro de la relacion.
+
+Tanto $\alpha$ y $\beta$ seran desconocidos y fijo.
+
+Muchas veces es comun asumir que $E \ Y_{i}$, tal que:
+
+- $E \ Y_{i} = \alpha + \beta \ x_{i}$
+
+Por la general la funcion que nos da $E \ Y$ en terminos de **x** se denomina como **funcion de regresion de la poblacion**.
+
+La idea de la regresion sera poder predecir $Y_{i}$ por medio del conocimiento de $x_{i}$, usando la relacion definida arriba. Se suele decir que $Y_{i}$ es la varibale dependiente y $x_{i}$ es la varibale independiente. Esta relacion de dependia es distinta a la planteada en unidades anteriores. Para no genera esta confusion de puede hablar de $Y_{i}$ como la variable de respuesta, mientras que la varibale  $x_i$ sera la variable de prediccion. Bajo la idea de inferencia en esta relacion, se puede reescribir la funcion como :
+
+- $E(Y_{i}| x_{i}) = \alpha + \beta \ x_{i}$
+
+Esto se lee como la esperanza condicionla de $Y_{i}$ habiendo observado $x_{i}$.
+
+Cuando escribimos la relacion de arriba, estamos implicitamente asumienod que la regresion de **Y** sobre **X** es lineal. Esto puede no ser justificado, dado que puede no haber teoria que sorporte una relacion lineal entre ambos parametros. Pero se asumo esto dado que es conveniente trabjar con esto.
+
+A la hora de hacer este analisis debenos seguir dos pasos.:
+- El primero esta orientado a la data, en donde se busca resumir toda la data observdada
+- El segundo paso es estadiostico, donde bsucamos poder inferir la pendiente y la intercpcion, es decir el parametro $\alpha$ y $\beta$. La ides es, a apartir de observar $n$ puntos de la forma $(x_{i},y_{i})$ , buscaremos poder resumir esta informacion por medio de generar uan linea que encajke que con los puntos observados. 
+
+Una forma de generar esta linea es por medio de **Minimos cuadrados**:
+
+Bajo un conjunto de $n$ puntos de la forma $(x_{i},y_{i})$, buscamos poder generar una linea sobre esta nube de puntos lo mas cercana posible. Frente a esto tenemos que para toda linea de la forma $y = c + dx$, el **error residual de la suma de cuadrados** se puede definir como:
+
+- $RSS = \sum_{i=1}^{n}(y_{i} - (c+ d \ x_{i}))²$
+
+Esto mide la distancia vertical desde cada punto de la informacion a la linea $c + dx$ y la usma de los cuadrados de las distancias. 
+
+los **estamidores de cudrados minimos** de $\alpha$ y $\beta$ seran los valores $a$ y $b$ tal que la linea $a + bx$ minimizan el **RSS**. Es decir
+
+- $min_{c,d} = \sum_{i=1}^{n}(y_{i} - (c + d \ x_{i}))² = \sum_{i=1}^{n}(y_{i} - (a + b \ x_{i}))²$
+
+Esto se podra minimizar de la siguiente manera. Para todo valor fijo de d, el valor de c que nos da el valor minimo puede seer obtenido escribiendo:
+
+- $\sum_{i=1}^{n}(y_{i} - (c + d \ x_{i}))² = \sum_{i=1}^{n}((y_{i} -  d \ x_{i}) - c)²$
+
+Luego el valor minimo de c sera:
+
+- $c = \frac{1}{n} \sum_{i=1}^{n}(y_{i} - dx_{i}) = \bar{y} - d \ \bar{x}$
+
+Luego para algun valor de d, el valor minimo de **RSS** sera:
+
+- $\sum_{i=1}^{n}((y_{i} - dx_{i})- (\bar{y} - d \ \bar{x}))² = \sum_{i=1}^{n}((y_{i} - \bar{y})- d(x_{i} - \ \bar{x}))² = S_{yy} - 2dS_{xy} + d²S_{xx}$
+
+Luego el valor minimo de d sera:
+
+- $d = \frac{S_{xy}}{S_{xx}}$
+
+Para ejemplos implementativos, volver al libro de algebra lineal computacional.
+
+Otra forma sera considerando distancia horizontales, donde la linea obtenida sera distinta a considerando distancias horizontales. 
+
+El metodo de cuadrados minimos deberai ser considerado no como un metodo de inferencia estadistico, sino como un metodo de encudrar un linea dada un set de data. 
+
+### CONDITIONAL NORMAL MODEL 
+Dentro de la regresion lineal el **modelo normal condicional** sera el mas comun y el mas sencillo de analizar. Tenemos que la data observada seran **n** pares de valores $(x_{i},y_{i})$. los valores de $x_{i}$ seran considerados fijos y conocidos. 
+
+La distrbucion de $Y_{i}$ sera normal, donde:
+
+- $Y_{i} ∼ n(\alpha + \beta x_{i}, \sigma²)$
+
+para $i = 1,...,n$. Luego el modelo normal condicional podria ser expresado como:
+
+- $Y_{i} = \alpha + \beta x_{i} + \epsilon_{i}$
+
+donde $\epsilon_{i},....,\epsilon_{n}$ es un **iid** tal que posee la distribucion $n(0,\sigma²)$. Luego la funcion de densidad de la probabilidad conjunta sera:
+
+![Texto alternativo](Funcion-probabilidad-conjunta-regresion.png)
