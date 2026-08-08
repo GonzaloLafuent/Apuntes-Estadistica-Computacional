@@ -245,15 +245,26 @@ En resumen en la esperanza sera un valor que nos indica el valor promedio que se
 
 ![Texto alternativo](Propiedades-Esperanza.png)
 
-**VARIANZA:** es una medida de la deispersion de una distribucion. Sea **X** una variable aleatoria con $\mu$ igual a su media, es decir $\mu = E(X)$. luego la varianza de **X** se define como:
+**VARIANZA:** es una medida de la dispersion de una distribucion. Sea **X** una variable aleatoria con $\mu$ igual a su media, es decir $\mu = E(X)$. luego la varianza de **X** se define como:
 
 - $ VAR(X) = \sigma = E(X- \mu)² = \int_{}{} (x-\mu)² \mathrm{d}F(X) $
 
-la desviacion estandar de **X** se define como $\sqrt {VAR(X)}$
+la **desviacion estandar** de **X** se define como $\sqrt {VAR(X)}$
 
 para el calculo de $VAR X$ suele ser util usar una formula alternativa, tal que:
 
 - $VAR \ X = EX² - (EX)²$ 
+
+La varianza indica que tan alejada estan los valores de un conjunto de datos respecto a su media. Hay varias formas de interpretarlos:
+- Si la varianza es cero, implica que todos los datos son identicos, no hay cambios entre los datos onbservados.
+- Si el valor es muy alto, los datos estan muy alejados de la media.
+- De ser bajo, estan mas cerca de la media, estan alrederos de ella. 
+
+Cuando hablamos de dispersion nos referimos al grado de distanciamento o separacion que existe entre los valores de un conjunto de datos. 
+
+Ej: dos líneas de producción de bombillas que en promedio duran 100 horas:
+- Fábrica A: Las bombillas duran 98, 99, 100, 101 y 102 horas. Su dispersión es baja porque todas duran casi lo mismo.
+- Fábrica B: Las bombillas duran 40, 70, 100, 130 y 160 horas. Su dispersión es alta porque hay mucha variación en su calidad.
 
 **FAMILIAS DE DISTRIBUCIONES COMUNES**
 Para poder modelar poblaciones, en general trabajamos con con familias de distribuciones. Las familias son idexadas por mas de un parametro. 
@@ -265,6 +276,7 @@ Cuando hablamos de familias de distribuciones nos referimos a un conjunto de dis
 Es decir uan familia de distribuciones tiene una misma funcion general parametrizada.
 
 ### DISTRIBUCIONES DISCRETAS: 
+**DISTRIBUCION UNIFORME:**
 una variable independeinte **X** tiene una distribucion uniforme si, la distribucion es:
 
 - $P(X = x|N) = \frac{1}{N}$ con $x = 1,2,3....N$.
@@ -272,6 +284,7 @@ una variable independeinte **X** tiene una distribucion uniforme si, la distribu
 la distribucion da la misma masa para cada posible resultado 1,2..N. a su vez tenemos que:
 
 - $EX = \frac{N+1}{2}$
+- $EX² = \frac{(N+1)(2N+1)}{6}$
 - $VAR X = \frac{(N+1)(N-1)}{12}$
 
 Sera una distribucion para variables aleatorias **DISCRETAS**
@@ -294,7 +307,9 @@ lo que da que:
 
 Esta ditribucion muestra lo dificil de trabajar con poblaciones finitas.
 
-**FALTA LA DEFINCION DE ESPERANZA Y VARIANZA**
+Formulas de varianza y esperanza:
+- $EX = \frac{KM}{N}$
+- $VAR X = \frac{KM}{N}(\frac{(N-M)(N-K)}{N(N-1)})$
 
 **DISTRIBUCION DE BERNOULLI:**
 Una variable independiente **X** posee una distribucion de bernoulli si: 
@@ -411,9 +426,11 @@ $EX = \frac{b+a}{2}$
 $VAR X = \frac{(b-a)^2}{12}$
 
 **DISTRIBUCION GAMMA**
-es una familia de distribucion sobre $[0,\infty)$. Tenemos que la pdf sera:
+es una familia de distribucion sobre $[0,\infty)$. Este permite medir tiempos de espera, desgaste de piezas y varibales con asimetria positiva. Tenemos que la pdf sera:
 
-- $f(t) = \frac{t^{\alpha -1}e^{-t}}{\Gamma(\alpha)}$
+- $f(t| \alpha, \beta) = \frac{t^{\alpha - 1}e^{\frac{-t}{\beta}}}{\Gamma(\alpha)}$
+
+Donde la funcion $\Gamma(n) = (n-1)!$, para enteros n mayores a 1.
 
 para $0 < t < \infty$. donde tenemos que:
 
@@ -421,8 +438,16 @@ para $0 < t < \infty$. donde tenemos que:
 
 el parametro $\alpha$ se suele conocer como el parametro de forma, siendo el que mas influye en la distribucion.
 
-- $EX = ?$
-- $VAR x = ?$
+- $EX = \alpha.\beta$
+- $VAR x = \alpha.\beta²$
+
+Al definir casos especifios de esta, tenemos distinas familias especificas de dsitrbuciones. Si tomamos $\alpha = \frac{p}{2}$ y tomo $\beta = 2$ luego la funcion de densidad de la probabilidad sera:
+
+- $f(x|p) = \frac{x^{\frac{p}{2} - 1}e^{\frac{-x}{2}}}{\Gamma(\frac{p}{2}).2^{\frac{p}{2}}}$
+
+Esta sera la distribucion **chi cuadrado**.
+
+Si tomamos $\alpha = 1$  tendremos la denomina **distribucion exponencial**.
 
 **DISTRIBUSION NORMAL O DISTRIBUCION GAUSSIANA**
 caracteristicas de esta distribucion:
@@ -439,6 +464,8 @@ Esta distribucion es especial debido a que sos parametros nos proveen informacio
 Si una variable a aletoria posee una distribucion norma tal que $normal(\mu,\sigma^2)$, luego puedo transforma a la variable aleatoria $Z = (X-\mu)/ \sigma$ que posee una dsitribucion $normal(0,1)$, conodifo como la **normal estandar**.
 
 Esto nos dice que toda distribucio normla puede ser calculada en terminso de la distrbucion normal estandar, dandonos una forma mas sencilla de obtener la probailidad con algo conocido. 
+
+Si tengo una varibale aleatoria X tal quue posee una distribucion de la forma $n(\mu,\sigma²)$, luego tenemos que $X = \frac{(X - \mu)}{\sigma}$ posee una distrbucion de la forma $n(0,1)$,lo que se llama como la **dsitribucion normal estandar**. De esta forma tlas las distribuciones normales pudee ser calculadas en terminso de la funcion normal estandar. Esto siplifica el caclulo de la esperanza y la varianza. 
 
 **CAUCHY DISTRIBUTION**
 Posee una forma de campana, definda sobre $(-\infty,\infty)$ con una pdf de la forma:
