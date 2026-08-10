@@ -467,12 +467,27 @@ Esto nos dice que toda distribucio normla puede ser calculada en terminso de la 
 
 Si tengo una varibale aleatoria X tal quue posee una distribucion de la forma $n(\mu,\sigma²)$, luego tenemos que $X = \frac{(X - \mu)}{\sigma}$ posee una distrbucion de la forma $n(0,1)$,lo que se llama como la **dsitribucion normal estandar**. De esta forma tlas las distribuciones normales pudee ser calculadas en terminso de la funcion normal estandar. Esto siplifica el caclulo de la esperanza y la varianza. 
 
+Con respecto a la varianza y al esperanza. Si tomamos en cuenta la transformacion dada por la variable aletoria Z, tenemos que:
+
+- $EZ = 0$
+- $VAR Z = 1$
+
+a partir de esto, para la varibale **X** tenemos que:
+- $EX = \mu$
+- $VAR x = \sigma²$
+
+Esto es una  de las caratarteristcas importentes de la distrbucion, donde la esperanza y la varianza definen la forma y lccacion exacta de la distribucion.
+
+La dsitribucion normla puede aproximar un conjunto de otras distrbuciones, por medio de la justificacion del teorema del limite central. Si tengo un varibale X con una distribucion binomial, luego bajo condicion espeicificas yo peudo aproximar X por medio de sus distrbucion normal, tomando la media y la varianza asociada a X para la distribucion binomial. 
+
 **CAUCHY DISTRIBUTION**
 Posee una forma de campana, definda sobre $(-\infty,\infty)$ con una pdf de la forma:
 
 - $f(x|\theta) = \frac{1}{\pi} \ \frac{1}{1+(x-\theta)^{2}}$
 
 En este caso no existe la media en esta distribucion. Este tipo de distribucion representa un caso extremo contra el cual pueden ser puesta a prueba ciertas conjeturas. 
+
+En este caso la esperanza de la distrbucion no existe, dado que tiende al infinito. 
 
 **DISTRIBUCION EXPONENCIAL**
 Es un caso especial de la distribucion gamma. la pdf tendra la siguiente forma:
@@ -497,6 +512,20 @@ Tambien tenemos que:
 **DESIGUALDAD DE CHERYSHEV:** dada una variable independiente **X** y una funcion$ g(x)$ no negativa. luego para todo $r >0$ tengo que:
 
 - $P(g(X) \geq r) \leq \frac{Eg(x)}{r}$
+
+Otra construccion analoga sera: 
+
+- $P(|X−μ| ≥ k σ) \ ≤ \ \frac{1}{k²}$
+
+Donde:
+- $X$ es una variable aleatoria
+- $\mu$ es la media
+- $\sigma$ es la desviacion estandar
+- $k$ es el numero de desviaciones estandar
+
+Esta desiguldad a plica a toda distribucion sobre la cula se puede obtener una media y una varianza. La implicaion base de esta sera que no importa lo extraña o caótica que sea tu distribución de datos, Chebyshev asegura que al menos un porcentaje fijo de los datos caerá dentro de un rango determinado.
+
+La Desigualdad de Chebyshev implica que la varianza y la desviación estándar limitan estrictamente la dispersión de los datos, asegurando matemáticamente que la gran mayoría de las observaciones siempre se concentrarán cerca de la media, sin importar la forma que adopte la distribución.
 
 ## DISTRIBUCIONES CONJUNTAS
 En esta caso vamos a empezar a hablar de modelo que incluyen mas de una variable independiente, estos seran modelos mutivariable.
@@ -583,6 +612,11 @@ esta funcion cumplira con las mismas probabilidades que otras **p
 mf**
 
 Para la defincion de variables continuas, vale la misma de defincion, cambiando **pmf** por **pdf**.
+
+La idea de distribucion condicionla continua nos define un caso genrico frente al cual puede obtener simeplte la pd. notar que:
+
+- $f(x|y)\ . \ f_y(y) = f(x,y)$
+- $f(y|x) \ . \ f_x(x) = f(x,y) $
 
 ### INDEPENDENCIA
 Sea $(X,Y)$ un vector bivariable aleatorio con una funcion de probabilidad conjunto **pdf** o **pmf**, funciones de probabilidad marginal $f_x(x)$ y $f_y(y)$ luego **X** e **Y** son varibales independientes si para todo $x \in R$ y $y \in R$ tengo que:
