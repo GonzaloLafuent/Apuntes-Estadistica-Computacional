@@ -2,6 +2,8 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 
+# Importante: tener en cuenta la seed a la hora de generar valores random
+
 p = 0.03
 n = 100000
 
