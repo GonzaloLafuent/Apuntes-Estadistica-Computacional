@@ -5,7 +5,7 @@
 - Para el 30 xc y cx son los casos que son equiprobable? 
 
 ### GUIA - 2
-- 9) b) Establezco una nueva variable aleatoria para calcular? O puedo plantear uan socntruccion condicional a aprtir de lo que ya plantee en en el a?
+- 9) b) Establezco una nueva variable aleatoria para calcular? O puedo plantear uan socntruccion condicional a aprtir de lo que ya plantee en en el a? Esto ya esta
 - 10) b) como resumir la formula de la esperanza?
 - 17) c), como defino bien el intervalo
 - 14) c) calculo de esperanza
