@@ -6,8 +6,12 @@
 
 ### GUIA - 2
 - 9) b) Establezco una nueva variable aleatoria para calcular? O puedo plantear uan socntruccion condicional a aprtir de lo que ya plantee en en el a? Esto ya esta
-- 10) b) como resumir la formula de la esperanza?
-- 17) c), como defino bien el intervalo
+- 10) b) como resumir la formula de la esperanza? ya esta es la sumatoria
+
+- 17) c), como defino bien el intervalo (es el domnio, pero la aplicacion camba todo al aplicar)
 - 14) c) calculo de esperanza
 - 18) a) esta bien plantear la integralm sobre los intervalos dados y apartir de eso definir la acumulacion? Por que si lo grafico en si lo que necesito es el area en ese intervalo
 - 20) Preguntar
+
+### GUIA - 3
+- Se pued tener un soport bideminsional? Ya el ehcho de que x e Y tebngan su ditrbucion porpia las hace indepedintes? Ejericio 7
