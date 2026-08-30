@@ -1,10 +1,10 @@
 # CLASE-6
 ## NOTAS
 ### DESIGUALDAD DE CHEBYSHEV TEO 3.6.1
-Sea X una V.A, $g(x)$ unatranformacion no negativa, entoncespara $r > 0$ se cumple que $P(g(x) >= r) <= \frac{E(g(x))}{r}$.
-$g(x)$ puede ser cualquier cosa mientras nos e negativo. Se puede leer como la porbabilidad de una tranofmracion acotado por una cota r, es menor o igual a el valor esperado de la transformacion sobre la cota.
+Sea X una V.A, $g(x)$ unatranformacion no negativa, entonces para $r > 0$ se cumple que $P(g(x) >= r) <= \frac{E(g(x))}{r}$.
+$g(x)$ puede ser cualquier cosa mientras nos e negativo. Se puede leer como la porbabilidad de una transformacion acotado por una cota r, es menor o igual a el valor esperado de la transformacion sobre la cota.
 
-Sabemos que el $E(g(X))$ es la intrgral etre menos infito y mas infito de g(x) mutiplicado por su porbabilidad puntual. Eso lo puedo acotar tomando una integral que se define sobre todos los x tal que g(x)>= r. se la acota por abajo. Luego por la cota, puedo sacar de adentro de la indeitdad g(x) como una contsnate r, por la cota establcecidad. Luego la el resultado que nos queda es que $E(g(x)) >= r* P(g(x) >= r)$. Graficamente se puede ver lo que quier graficar. luego tenemos que $P(g(x) >=r) <= \frac{E(g(x))}{r}$
+Sabemos que el $E(g(X))$ es la intrgral etre menos infito y mas infito de g(x) mutiplicado por su probabilidad puntual. Eso lo puedo acotar tomando una integral que se define sobre todos los x tal que g(x)>= r. se la acota por abajo. Luego por la cota, puedo sacar de adentro de la indeitdad g(x) como una contsnate r, por la cota establcecidad. Luego la el resultado que nos queda es que $E(g(x)) >= r* P(g(x) >= r)$. Graficamente se puede ver lo que quier graficar. luego tenemos que $P(g(x) >=r) <= \frac{E(g(x))}{r}$
 
 ### COTAS PARA UNA VARIBALE NORMALIZADA, ej 3.612
 Supongamos que tenemos $g(x) = \frac{(x-\mu)^{2}}{\sigma^{2}}$, donde $\mu = E(x)$ y $\sigma^{2} = VAR(X)$. tomemos $P(\frac{(x-\mu)^{2}}{\sigma^{2}} >= t^{2})$, por la desiguladad anterior tomando $r = t^{2}$, tenemos que todo es menor a $\frac{1}{t^{2}}*E(\frac{(x-\mu)^{2}}{\sigma^{2}})$, donde la esperanza me da 1, tal que puedo sacar la contsate y luego lo que queda es igual a la deifncion de varianza.
@@ -20,9 +20,9 @@ Esta desigualdad se va a usar para
 **DEF 4.1.1**: Un **VECTOR ALEATORIA** de deminsion n, es una funcion del espacio muestral en $R^{n}$
 
 EJ:
-- Arrojar dos dados equilibrados. El espacio muestral $S = (1,1), ...., (6,6)$,son 36 elementos equiprobables. Para cada uno de estso resultados definimos la V.A X = 'suma de ambos resultados', Y = 'el modulo de la diferencia netre resultados'. Vamos a definir la porbabilidad de cada par. La suma sabemos que nos puede dar hasta 12, mientras que la diferencia nos da entre 0 y 5. A las combinaciones que no son posibles le vamos a dar 0. Para la tabla ver el ejemplo en el libro, es contar igual que siempre resultados posibles sobre opciones totales. 
+- Arrojar dos dados equilibrados. El espacio muestral $S = (1,1), ...., (6,6)$,son 36 elementos equiprobables. Para cada uno de estos resultados definimos la V.A X = 'suma de ambos resultados', Y = 'el modulo de la diferencia netre resultados'. Vamos a definir la porbabilidad de cada par. La suma sabemos que nos puede dar hasta 12, mientras que la diferencia nos da entre 0 y 5. A las combinaciones que no son posibles le vamos a dar 0. Para la tabla ver el ejemplo en el libro, es contar igual que siempre resultados posibles sobre opciones totales. 
 
-Definimos: funcion de probabilidad puntual conjunta, a la $f(x,y) = P(X = x, Y = y)$, que la primera tenag el valor dadao, y que la segunda tenga el otor valor dado.Se puede escribir como $f_{x}{y}(x,y)$. La funcion de probabilidad conjunta define complmentamente la tabla dada antes. La porbabilidad de $P((x,y) \in A) = \sum_{(x,y) \in A}f(x,y)$
+**Definimos:** funcion de probabilidad puntual conjunta, a la $f(x,y) = P(X = x, Y = y)$, que la primera tenga el valor dadao, y que la segunda tenga el otro valor dado.Se puede escribir como $f_{x}{y}(x,y)$. La funcion de probabilidad conjunta define complmentamente la tabla dada antes. La porbabilidad de $P((x,y) \in A) = \sum_{(x,y) \in A}f(x,y)$
 
 Para esta conjunto tenemos que $E(g(x,y)) = \sum_{(x,y)\in R^{2}}g(x,y)*f(x,y)$
 
@@ -59,7 +59,7 @@ Si tengo las probabilidades marginales por separado, eso me define una unica pro
 Por definicion de probabilidad sabemos que $f(x,y) > 0$ y que $\int \int_{-\infty}^{\infty} f(x,y) dxdy = $
 
 ### DISTRIBUCION CONJUNTA ACUMULADA
-Se define como $F(x,y) = P(x<=x, y<=y)$, se define igual que antes. En terminos de integrales tengo que $F(x,y) = \int_{-\infty}^{x}\int_{-\infty}^{y} f(s,t) ds dt$. A su vez tenemos que $f(x,y) = \frac_{\alpha^{2}F(x,y)}{\alpha x \alpha y}$, es una derivada parcial. Si las variables fueran independientes seria lo mimso poner parcial o total. 
+Se define como $F(x,y) = P(x<=x, y<=y)$, se define igual que antes. En terminos de integrales tengo que $F(x,y) = \int_{-\infty}^{x}\int_{-\infty}^{y} f(s,t) ds dt$. A su vez tenemos que $f(x,y) = \frac{\alpha^{2}F(x,y)}{ \alpha x \alpha y}$, es una derivada parcial. Si las variables fueran independientes seria lo mimso poner parcial o total. 
 
 ### PROBABILIDAD CONDICIONAL
 Tomemos un vector (x,y) el cual es aleatorio discrteo, que posee una $f(x,y)$ como funcion de distribucion puntutal, las funciones marginales de la forma $f_{x}(x) > 0$ y $f_{y}(y) > 0$, la funcion de distribucion condicional de probabilidad puntual de y dado x es:

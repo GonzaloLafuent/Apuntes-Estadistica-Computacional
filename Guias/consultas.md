@@ -12,6 +12,9 @@
 - 14) c) calculo de esperanza
 - 18) a) esta bien plantear la integralm sobre los intervalos dados y apartir de eso definir la acumulacion? Por que si lo grafico en si lo que necesito es el area en ese intervalo
 - 20) Preguntar
+- Que tener en cuenta a la hora de realizar transformaciones de variables? al gun teorema en especial? o simplemtne con realizar la tranformacion aplicada al intervlo y definir bien los limites de integracion esta correcto?
+- Por que para la esperanza solo tenog ne cuenta el intervlo de la idneicadora pero para el lcalaulo de F(X) por lo general tengo que diovidir en varios casos, es necsario si o si ver que por ejmplo en el 5 dsp de a dad 1, o ya se peude asumir?
 
+- Para el soporte del 17, siempre hay que pensar los limites? Siempre el intervalo dado define donde esta la funcion y el resto lo planteo con las propiedades?
 ### GUIA - 3
 - Se pued tener un soport bideminsional? Ya el ehcho de que x e Y tebngan su ditrbucion porpia las hace indepedintes? Ejericio 7

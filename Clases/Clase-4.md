@@ -1,13 +1,13 @@
 # CLASE-4
 ## NOTAS
 ### MAS DE LA CLASE PASADA
-- Varianza: es el valor medio de las distancias cuadraticas al valor medio. 
+- **Varianza:** es el valor medio de las distancias cuadraticas al valor medio. 
 
-- TEO 2.3.4: Supongamos que $X$ es variable aleatoria con varianza finita (Esto implica que el valor esperado de esa funcion cuadratica me da algo) entonces la varianza de $VAR(aX + B) = a^{2} * VAR(X)$ con a y b constantes. Sumarle un valor constante no agrega nada, pero si multiplicar. 
+- **TEO 2.3.4:** Supongamos que $X$ es variable aleatoria con varianza finita (Esto implica que el valor esperado de esa funcion cuadratica me da algo) entonces la varianza de $VAR(aX + B) = a^{2} * VAR(X)$ con a y b constantes. Sumarle un valor constante no agrega nada, pero si multiplicar. 
 
 ### CONSTRUCCION DE DE DISTRIBUCIONES COMUNES
 ### DISTRIBUCIONES DISCRETAS
-**UNIFORME:** $X \sim U(1,N)$ si $P(X=x|N) = \frac{1}{n}$ donde x vale desde el 1 hasta el N. Cual seria el valor esperado de X? Sabemos que $E(X)$ es la suma de todos los posibles valores de la variable por su probabilidad, $E(X) = \sum_{x}^{} x * P(X = x|N)$. Esto a la larga dada el promedio, por que cadad valor es equiprbable. Si la probabilida de cada uno sea distinto, el peso es deistinto para cad numero, y eso por la definicion de $E(X)$ modifca el valor dado. Luego en esta distribucion $E(X) = \frac{N(N+1)}{2} $
+**UNIFORME:** $X \sim U(1,N)$ si $P(X=x|N) = \frac{1}{n}$ donde x vale desde el 1 hasta el N. Cual seria el valor esperado de X? Sabemos que $E(X)$ es la suma de todos los posibles valores de la variable por su probabilidad, $E(X) = \sum_{x}^{} x * P(X = x|N)$. Esto a la larga dada el promedio, por que cadad valor es equiprobable. Si la probabilidad de cada uno sea distinto, el peso es deistinto para cada numero, y eso por la definicion de $E(X)$ modifca el valor dado. Luego en esta distribucion $E(X) = \frac{N(N+1)}{2} $
 
 A su vez tenemos que: $VAR(X) = \frac{(N+1)(N-1)}{12}$
 

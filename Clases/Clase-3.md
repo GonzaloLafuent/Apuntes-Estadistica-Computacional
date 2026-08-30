@@ -116,3 +116,5 @@ El grafico de la misma tmb puede ser util para pensar la porbabilida que hay ent
 En el caso de la variable aleatoria continua, la funcion de densidad puntual no dice el valor exacto en ese punto, sino que solo dice lo que se acumula en este punto. De ahi viene el porque preguntar por $P(X = x) = 0$ dentro de las variables continuas. 
 
 Es importa definir bien el soporte a la hora de dar la funcion de probabilida puntual. La misma permite, por medio de una funcion idicador, definir un valor de 0 y 1, que anaula la funcion dada si ess que el valor x sobre el cual se quiere evaluar cumple o no una cierta condicion.
+
+**FDA:** Pensar que cuando se calcula esto, si tenes una funcion dada por casao, debemos diviidr en integrales de acuerdo a la acumulacion de porbabilidad en cada intervalo. 
