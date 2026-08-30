@@ -16,5 +16,7 @@
 - Por que para la esperanza solo tenog ne cuenta el intervlo de la idneicadora pero para el lcalaulo de F(X) por lo general tengo que diovidir en varios casos, es necsario si o si ver que por ejmplo en el 5 dsp de a dad 1, o ya se peude asumir?
 
 - Para el soporte del 17, siempre hay que pensar los limites? Siempre el intervalo dado define donde esta la funcion y el resto lo planteo con las propiedades?
+
+- Ver el 21
 ### GUIA - 3
 - Se pued tener un soport bideminsional? Ya el ehcho de que x e Y tebngan su ditrbucion porpia las hace indepedintes? Ejericio 7
